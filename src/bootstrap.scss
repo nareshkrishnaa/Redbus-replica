@@ -1,0 +1,40 @@
+// Font
+$font-family-sans-serif: "Open Sans", sans-serif;
+
+// Colors
+
+$primary: #d84e55;
+
+// scss-docs-start spacer-variables-maps
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 6,
+  7: $spacer * 8,
+  8: $spacer * 12,
+  9: $spacer * 16,
+  10: $spacer * 32,
+) !default;
+// scss-docs-end spacer-variables-maps
+
+$headings-margin-bottom: $spacer * 1;
+$line-height-base: 1.7;
+
+// Navbar
+$navbar-nav-link-padding-x: 0.8rem !default;
+$navbar-padding-y: $spacer * 1;
+$navbar-dark-color: #fff;
+
+// Buttons
+$btn-padding-y: 10px;
+$btn-padding-x: 30px;
+// $btn-border-radius: 50px;
+// $btn-border-radius-lg: 50px;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+// @import "~bootstrap/scss/_variables";
