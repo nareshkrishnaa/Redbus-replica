@@ -3,7 +3,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 function Navbar() {
   return (
-    <header className="d-block">
+    <header className="d-block mb-8">
       <section id="navbar">
         <nav className="navbar fixed-top navbar-expand-lg bg-primary">
           <div className="container">

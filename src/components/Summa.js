@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap";
-import "./BookingInputGroup.scss";
+import "./HomePage.scss";
 import {
   Container,
   Row,
