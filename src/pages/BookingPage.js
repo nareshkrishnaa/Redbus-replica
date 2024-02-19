@@ -80,45 +80,32 @@ const getTicketPrice = () => {
 
 const getSeatAvailability = () => {
   let n = 50;
-  if (busType == 0) {
+  if (busTypeFlag == 0) {
     n = 30;
   }
   const randomNumber = Math.floor(Math.random() * n) + 1;
   return randomNumber;
 };
-const arrayOfBusDetails = (travelsArray) => {
-  return travelsArray.map((travel) => ({
-    travelsName: travel.travelsName,
-    busType: getBusType(),
-    acType: getACType(),
-    rating: generateRating(),
-    noOfreviews: generateNoOfReviews(),
-    ticketPrice: getTicketPrice(),
-    seatAvailability: getSeatAvailability(),
-  }));
-};
 
-const getStops = (fcity, tcity) => {
+const getFstop = (fcity) => {
   const fcityObj = cities.find((city) => {
     return city.cityName === fcity;
   });
 
+  const fcityStops = fcityObj.busStops;
+  let randomIndex = Math.floor(Math.random() * fcityStops.length);
+  const bstop = fcityStops[randomIndex];
+  return bstop;
+};
+
+const getTstop = (tcity) => {
   const tcityObj = cities.find((city) => {
     return city.cityName === tcity;
   });
-
-  const fcityStops = fcityObj.busStops;
   const tcityStops = tcityObj.busStops;
-
-  let randomIndex = Math.floor(Math.random() * fcityStops.length);
-  const bstop = fcityStops[randomIndex];
-  randomIndex = Math.floor(Math.random() * tcityStops.length);
+  const randomIndex = Math.floor(Math.random() * tcityStops.length);
   const astop = tcityStops[randomIndex];
-
-  console.log(fcityStops, tcityStops);
-  console.log(bstop, astop);
-
-  return [bstop, astop];
+  return astop;
 };
 
 const BookingPage = () => {
@@ -126,7 +113,20 @@ const BookingPage = () => {
   const cityData = location.state;
   let fcity = cityData.fromCity;
   let tcity = cityData.toCity;
-  const [bstop, astop] = getStops(fcity, tcity);
+
+  const arrayOfBusDetails = (travelsArray) => {
+    return travelsArray.map((travel) => ({
+      travelsName: travel.travelsName,
+      busType: getBusType(),
+      acType: getACType(),
+      rating: generateRating(),
+      noOfreviews: generateNoOfReviews(),
+      ticketPrice: getTicketPrice(),
+      seatAvailability: getSeatAvailability(),
+      bstop: getFstop(fcity),
+      astop: getTstop(tcity),
+    }));
+  };
 
   let numberOfTravels = randomNumberOfTravels();
   let travelsNameArray = getRandomTravels(numberOfTravels);
@@ -143,8 +143,8 @@ const BookingPage = () => {
               busType={item.busType}
               ebt={ebt}
               eat={eat}
-              bstop={bstop}
-              astop={astop}
+              bstop={item.bstop}
+              astop={item.astop}
               travelTime={travelTime}
               fcity={fcity}
               tcity={tcity}
