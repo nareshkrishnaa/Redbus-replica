@@ -7,7 +7,7 @@ const BusInfoBox = (props) => {
     <>
       <Container fluid>
         <Row>
-          <Col lg={9} className="border">
+          <Col className="border">
             <Row className="ps-2 py-1">
               <Col>
                 <h5 className="fw-bold mt-2">{props.travelsName}</h5>

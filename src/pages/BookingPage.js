@@ -3,6 +3,7 @@ import { travels, busType, cities } from "../data/Database";
 import { Col, Container, Row } from "react-bootstrap";
 import BusInfoBox from "../components/BusInfoBox";
 import { useLocation } from "react-router-dom";
+import Filter from "../components/Filter";
 const randomNumberOfTravels = () => {
   let randomNumber = Math.ceil(Math.random() * (5 - 2)) + 1;
   return randomNumber;
@@ -135,26 +136,33 @@ const BookingPage = () => {
   return (
     <div>
       <Container>
-        {busDetails.map((item) => {
-          return (
-            <BusInfoBox
-              travelsName={item.travelsName}
-              acType={item.acType}
-              busType={item.busType}
-              ebt={ebt}
-              eat={eat}
-              bstop={item.bstop}
-              astop={item.astop}
-              travelTime={travelTime}
-              fcity={fcity}
-              tcity={tcity}
-              rating={item.rating}
-              noOfreviews={item.noOfreviews}
-              ticketPrice={item.ticketPrice}
-              seatAvailability={item.seatAvailability}
-            />
-          );
-        })}
+        <Row>
+          <Col lg={2}>
+            <Filter />
+          </Col>
+          <Col lg={9}>
+            {busDetails.map((item) => {
+              return (
+                <BusInfoBox
+                  travelsName={item.travelsName}
+                  acType={item.acType}
+                  busType={item.busType}
+                  ebt={ebt}
+                  eat={eat}
+                  bstop={item.bstop}
+                  astop={item.astop}
+                  travelTime={travelTime}
+                  fcity={fcity}
+                  tcity={tcity}
+                  rating={item.rating}
+                  noOfreviews={item.noOfreviews}
+                  ticketPrice={item.ticketPrice}
+                  seatAvailability={item.seatAvailability}
+                />
+              );
+            })}
+          </Col>
+        </Row>
       </Container>
     </div>
   );
