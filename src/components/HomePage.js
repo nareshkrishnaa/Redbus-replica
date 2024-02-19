@@ -32,12 +32,13 @@ const HomePage = () => {
     }
   };
 
+  const cityData = { fromCity: fromCity, toCity: toCity };
+
   function searchButton() {
     if (fromCity === "From" || toCity === "To") {
       alert("Select Valid From and To Cities");
     } else {
-      navigate("/bookingPage");
-      console.log(fromCity, toCity);
+      navigate("/bookingPage", { state: cityData });
     }
   }
 

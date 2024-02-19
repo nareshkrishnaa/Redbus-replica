@@ -12,5 +12,6 @@
 
 <h1>Pending items</h1>
 
+Low Priority
+
 - Convert js alerts to aesthetic modals
-  ~~Check~~

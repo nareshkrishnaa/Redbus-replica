@@ -1,7 +1,8 @@
 import React from "react";
-import { travels, busType } from "../data/Database";
+import { travels, busType, cities } from "../data/Database";
 import { Col, Container, Row } from "react-bootstrap";
 import BusInfoBox from "../components/BusInfoBox";
+import { useLocation } from "react-router-dom";
 const randomNumberOfTravels = () => {
   let randomNumber = Math.ceil(Math.random() * (5 - 2)) + 1;
   return randomNumber;
@@ -29,13 +30,10 @@ let getBusType = () => {
   }
 };
 let ebt = "08:00 AM";
-let bstop = "Egmore";
-let astop = "No 1 Toll Gate";
+
 let eat = "02:00 PM";
 let travelTime = "06 hrs 00 mins";
 let basePrice = 497;
-let fcity = "Trichy";
-let tcity = "Chennai";
 
 let acFlag = 0;
 let getACType = () => {
@@ -100,15 +98,39 @@ const arrayOfBusDetails = (travelsArray) => {
   }));
 };
 
-const BookingPage = (props) => {
-  let fromCityId = 1;
-  let toCityId = 3;
+const getStops = (fcity, tcity) => {
+  const fcityObj = cities.find((city) => {
+    return city.cityName === fcity;
+  });
+
+  const tcityObj = cities.find((city) => {
+    return city.cityName === tcity;
+  });
+
+  const fcityStops = fcityObj.busStops;
+  const tcityStops = tcityObj.busStops;
+
+  let randomIndex = Math.floor(Math.random() * fcityStops.length);
+  const bstop = fcityStops[randomIndex];
+  randomIndex = Math.floor(Math.random() * tcityStops.length);
+  const astop = tcityStops[randomIndex];
+
+  console.log(fcityStops, tcityStops);
+  console.log(bstop, astop);
+
+  return [bstop, astop];
+};
+
+const BookingPage = () => {
+  const location = useLocation();
+  const cityData = location.state;
+  let fcity = cityData.fromCity;
+  let tcity = cityData.toCity;
+  const [bstop, astop] = getStops(fcity, tcity);
 
   let numberOfTravels = randomNumberOfTravels();
   let travelsNameArray = getRandomTravels(numberOfTravels);
   let busDetails = arrayOfBusDetails(travelsNameArray);
-  console.log(travelsNameArray);
-  console.log(busDetails);
 
   return (
     <div>
