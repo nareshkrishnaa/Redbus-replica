@@ -88,6 +88,21 @@ const getSeatAvailability = () => {
   return randomNumber;
 };
 
+const fcityStops = (fcity) => {
+  const fcityObj = cities.find((city) => {
+    return city.cityName === fcity;
+  });
+
+  return fcityObj.busStops;
+};
+
+const tcityStops = (tcity) => {
+  const tcityObj = cities.find((city) => {
+    return city.cityName === tcity;
+  });
+
+  return tcityObj.busStops;
+};
 const getFstop = (fcity) => {
   const fcityObj = cities.find((city) => {
     return city.cityName === fcity;
@@ -135,10 +150,10 @@ const BookingPage = () => {
 
   return (
     <div>
-      <Container>
+      <Container fluid="xxl">
         <Row>
           <Col lg={2}>
-            <Filter />
+            <Filter fcity={fcity} tcity={tcity} />
           </Col>
           <Col lg={9}>
             {busDetails.map((item) => {
