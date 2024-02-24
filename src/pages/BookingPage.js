@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { travels, busType, cities } from "../data/Database";
 import { Col, Container, Row } from "react-bootstrap";
 import BusInfoBox from "../components/BusInfoBox";
@@ -103,32 +103,38 @@ const tcityStops = (tcity) => {
 
   return tcityObj.busStops;
 };
-const getFstop = (fcity) => {
-  const fcityObj = cities.find((city) => {
-    return city.cityName === fcity;
-  });
-
-  const fcityStops = fcityObj.busStops;
-  let randomIndex = Math.floor(Math.random() * fcityStops.length);
-  const bstop = fcityStops[randomIndex];
-  return bstop;
-};
-
-const getTstop = (tcity) => {
-  const tcityObj = cities.find((city) => {
-    return city.cityName === tcity;
-  });
-  const tcityStops = tcityObj.busStops;
-  const randomIndex = Math.floor(Math.random() * tcityStops.length);
-  const astop = tcityStops[randomIndex];
-  return astop;
-};
 
 const BookingPage = () => {
+  const [boardingStop, setBoardingStop] = useState("adcfsd");
+  const [arrivalStop, setArrivalStop] = useState("");
   const location = useLocation();
   const cityData = location.state;
   let fcity = cityData.fromCity;
   let tcity = cityData.toCity;
+
+  const getFstop = (fcity) => {
+    const fcityObj = cities.find((city) => {
+      return city.cityName === fcity;
+    });
+
+    const fcityStops = fcityObj.busStops;
+    let randomIndex = Math.floor(Math.random() * fcityStops.length);
+    const bstop = fcityStops[randomIndex];
+    console.log(boardingStop);
+    console.log("Rammi thitraaa");
+    // setBoardingStop(bstop);
+    return bstop;
+  };
+
+  const getTstop = (tcity) => {
+    const tcityObj = cities.find((city) => {
+      return city.cityName === tcity;
+    });
+    const tcityStops = tcityObj.busStops;
+    const randomIndex = Math.floor(Math.random() * tcityStops.length);
+    const astop = tcityStops[randomIndex];
+    return astop;
+  };
 
   const arrayOfBusDetails = (travelsArray) => {
     return travelsArray.map((travel) => ({
@@ -150,15 +156,17 @@ const BookingPage = () => {
 
   return (
     <div>
+      <button>Click</button>
       <Container fluid="xxl">
         <Row>
           <Col lg={2}>
             <Filter fcity={fcity} tcity={tcity} />
           </Col>
           <Col lg={9}>
-            {busDetails.map((item) => {
+            {busDetails.map((item, index) => {
               return (
                 <BusInfoBox
+                  id={index}
                   travelsName={item.travelsName}
                   acType={item.acType}
                   busType={item.busType}
