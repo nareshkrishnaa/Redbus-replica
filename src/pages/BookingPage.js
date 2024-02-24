@@ -105,8 +105,6 @@ const tcityStops = (tcity) => {
 };
 
 const BookingPage = () => {
-  const [boardingStop, setBoardingStop] = useState("adcfsd");
-  const [arrivalStop, setArrivalStop] = useState("");
   const location = useLocation();
   const cityData = location.state;
   let fcity = cityData.fromCity;
@@ -120,9 +118,6 @@ const BookingPage = () => {
     const fcityStops = fcityObj.busStops;
     let randomIndex = Math.floor(Math.random() * fcityStops.length);
     const bstop = fcityStops[randomIndex];
-    console.log(boardingStop);
-    console.log("Rammi thitraaa");
-    // setBoardingStop(bstop);
     return bstop;
   };
 
@@ -153,14 +148,29 @@ const BookingPage = () => {
   let numberOfTravels = randomNumberOfTravels();
   let travelsNameArray = getRandomTravels(numberOfTravels);
   let busDetails = arrayOfBusDetails(travelsNameArray);
+  let boardingStopsArray = busDetails.map((item) => {
+    return item.bstop;
+  });
+  let arrivalStopsArray = busDetails.map((item) => {
+    return item.astop;
+  });
+  const [boardingStopsState, setBoardingStopsState] =
+    useState(boardingStopsArray);
+  const [arrivalStopsState, setArrivalStopsState] = useState(arrivalStopsArray);
 
   return (
     <div>
-      <button>Click</button>
-      <Container fluid="xxl">
+      <Container fluid>
         <Row>
           <Col lg={2}>
-            <Filter fcity={fcity} tcity={tcity} />
+            <Filter
+              fcity={fcity}
+              tcity={tcity}
+              boardingStopsState={boardingStopsState}
+              arrivalStopsState={arrivalStopsState}
+              setBoardingStopsState={setBoardingStopsState}
+              setArrivalStopsState={setArrivalStopsState}
+            />
           </Col>
           <Col lg={9}>
             {busDetails.map((item, index) => {
@@ -172,8 +182,8 @@ const BookingPage = () => {
                   busType={item.busType}
                   ebt={ebt}
                   eat={eat}
-                  bstop={item.bstop}
-                  astop={item.astop}
+                  bstop={boardingStopsState[index]}
+                  astop={arrivalStopsState[index]}
                   travelTime={travelTime}
                   fcity={fcity}
                   tcity={tcity}
