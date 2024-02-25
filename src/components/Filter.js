@@ -39,18 +39,30 @@ const Filter = (props) => {
     );
     if (updatedFromStopsCL[position] === true) {
       console.log(e.target.value);
-      // console.log(boardingStopsState);
-      const newboardingStopsState = [
-        new Array(boardingStopsState.length).fill(e.target.value),
-      ];
+      const newboardingStopsState = new Array(boardingStopsState.length).fill(
+        e.target.value,
+      );
       console.log(newboardingStopsState);
       setBoardingStopsState(newboardingStopsState);
-
-      // setBoardingStopsState(["abc", "rfg", "iup"]);
-      // console.log(boardingStopsState);
     }
 
     setfromStopsCLS(updatedFromStopsCL);
+  };
+
+  const handletoCLChange = (position, e) => {
+    const updatedToStopsCL = toStopsCLS.map((item, index) =>
+      index === position ? !item : item,
+    );
+    if (updatedToStopsCL[position] === true) {
+      console.log(e.target.value);
+      const newarrivalStopsState = new Array(arrivalStopsState.length).fill(
+        e.target.value,
+      );
+      console.log(newarrivalStopsState);
+      setArrivalStopsState(newarrivalStopsState);
+    }
+
+    setfromStopsCLS(updatedToStopsCL);
   };
 
   const handleClose = () => {
@@ -95,6 +107,9 @@ const Filter = (props) => {
                   className="form-check-input"
                   type="checkbox"
                   name={index}
+                  value={stop}
+                  checked={toStopsCLS[index]}
+                  onChange={(e) => handletoCLChange(index, e)}
                 />{" "}
                 {stop}
               </li>
