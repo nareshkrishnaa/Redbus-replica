@@ -1,8 +1,11 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "./BusInfoBox.scss";
+import { Modal } from "react-bootstrap";
 
 const BusInfoBox = (props) => {
+  const [modalShow, setModalShow] = React.useState(false);
+  const onHide = () => setModalShow(false);
   return (
     <>
       <Container fluid>
@@ -17,7 +20,7 @@ const BusInfoBox = (props) => {
               </Col>
               <Col>
                 <div className="d-inline">
-                  <p className="h4 d-inline">EBT-</p>
+                  <p className="h4 d-inline">EBT - </p>
                   <p className="h4 fw-bold d-inline ">{props.ebt}</p>
                 </div>
 
@@ -26,7 +29,7 @@ const BusInfoBox = (props) => {
                 <p className="text-danger">04h 10m</p>
 
                 <div className="d-inline">
-                  <p className="h4 d-inline ">EAT-</p>
+                  <p className="h4 d-inline ">EAT - </p>
                   <p className="h4 fw-bold d-inline ">{props.eat}</p>
                 </div>
 
@@ -71,9 +74,38 @@ const BusInfoBox = (props) => {
                   <p>
                     <strong>3</strong> Single
                   </p>
-                  <button className="btn btn-primary text-white rounded-0">
+                  <button
+                    onClick={() => setModalShow(true)}
+                    className="btn btn-primary text-white rounded-0"
+                  >
                     Book Seats
                   </button>
+                  <Modal
+                    show={modalShow}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                  >
+                    <Modal.Header closeButton onHide={onHide}>
+                      <Modal.Title id="contained-modal-title-vcenter">
+                        {props.travelsName}
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <h4>
+                        {props.fcity} --{">"} {props.tcity}
+                      </h4>
+                      <span>
+                        <h5>Bus Type</h5>Bus Type : {props.busType}
+                      </span>
+                      <span>
+                        <h5></h5> :{" "}
+                      </span>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button onClick={onHide}>Close</Button>
+                    </Modal.Footer>
+                  </Modal>
                 </div>
               </Col>
             </Row>

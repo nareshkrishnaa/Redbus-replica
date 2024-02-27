@@ -4,7 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import BusInfoBox from "../components/BusInfoBox";
 import { useLocation } from "react-router-dom";
 import Filter from "../components/Filter";
-import busDetails, { travelsNameArray } from "../data/randomData";
+import busDetails, { travelsNameArray, eat, ebt } from "../data/randomData";
 
 const BookingPage = () => {
   const location = useLocation();
@@ -37,7 +37,7 @@ const BookingPage = () => {
     busDetail.bstop = getFstop(fcity);
     busDetail.astop = getTstop(tcity);
   });
-  console.log("-------Booking Page----", busDetails);
+  // console.log("-------Booking Page----", busDetails);
 
   // let busDetails = arrayOfBusDetails(travelsNameArray);
   // const arrayOfBusDetails = (travelsArray) => {
@@ -86,11 +86,10 @@ const BookingPage = () => {
                   travelsName={item.travelsName}
                   acType={item.acType}
                   busType={item.busType}
-                  // ebt={ebt}
-                  // eat={eat}
+                  ebt={ebt}
+                  eat={eat}
                   bstop={boardingStopsState[index]}
                   astop={arrivalStopsState[index]}
-                  //
                   fcity={fcity}
                   tcity={tcity}
                   rating={item.rating}

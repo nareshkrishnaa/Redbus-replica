@@ -100,3 +100,4 @@ const arrayOfBusDetails = (travelsArray) => {
 const busDetails = arrayOfBusDetails(travelsNameArray);
 console.log("------randomData---------------", busDetails);
 export default busDetails;
+export { ebt, eat };
