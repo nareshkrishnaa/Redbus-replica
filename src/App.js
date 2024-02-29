@@ -8,17 +8,20 @@ import HomePage from "./components/HomePage";
 import BookingPage from "./pages/BookingPage";
 import Summa from "./components/Summa";
 import BusInfoBox from "./components/BusInfoBox";
+import SeatSelector from "./components/SeatSelector";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/bookingPage" element={<BookingPage />}></Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+
+      <SeatSelector />
     </div>
   );
 }

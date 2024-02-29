@@ -93,17 +93,27 @@ const BusInfoBox = (props) => {
                     </Modal.Header>
                     <Modal.Body>
                       <h4>
-                        {props.fcity} --{">"} {props.tcity}
+                        {props.fcity} - {props.tcity}
                       </h4>
                       <span>
-                        <h5>Bus Type</h5>Bus Type : {props.busType}
+                        <h5>Bus Type : {props.busType}</h5>
                       </span>
                       <span>
-                        <h5></h5> :{" "}
+                        <h5>
+                          Total seats:{props.busType === "Sleeper" ? 30 : 50}
+                        </h5>
                       </span>
+                      <span>
+                        <h5>Available seats:{props.seatAvailability}</h5>
+                      </span>
+                      <Container className="seat-container">
+                        <Row></Row>
+                      </Container>
                     </Modal.Body>
                     <Modal.Footer>
-                      <Button onClick={onHide}>Close</Button>
+                      <Button className="text-white" onClick={onHide}>
+                        Close
+                      </Button>
                     </Modal.Footer>
                   </Modal>
                 </div>
