@@ -1,0 +1,11 @@
+.red-box::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    /* Adjust width as needed */
+    height: 50px;
+    /* Adjust height as needed */
+    background-color: red;
+    margin-left: 5px;
+    /* Adjust margin as needed */
+}
