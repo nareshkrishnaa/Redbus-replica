@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "./BusInfoBox.scss";
 import { Modal } from "react-bootstrap";
+import SleeperLayout from "./SleeperLayout";
+import SeatLayout from "./SeatLayout";
 
 const BusInfoBox = (props) => {
-  const [modalShow, setModalShow] = React.useState(false);
-  const onHide = () => setModalShow(false);
+  const [buttonValue, setButtonValue] = useState("BOOK SEATS");
+  const handleClick = () => {
+    const row = document.querySelector(".seat-selector-row");
+    const button = document.getElementById("book-seats-button");
+
+    if (row.classList.contains("d-none")) {
+      setButtonValue("HIDE SEATS");
+      button.style.backgroundColor = "#747f8d";
+      row.classList.remove("d-none");
+    } else {
+      row.classList.add("d-none");
+      setButtonValue("BOOK SEATS");
+      button.style.backgroundColor = "var(--bs-primary)";
+    }
+  };
   return (
-    <>
+    <div className="busInfoBox mb-3">
       <Container fluid>
         <Row>
           <Col className="border">
@@ -75,54 +90,61 @@ const BusInfoBox = (props) => {
                     <strong>3</strong> Single
                   </p>
                   <button
-                    onClick={() => setModalShow(true)}
+                    id="book-seats-button"
+                    onClick={handleClick}
                     className="btn btn-primary text-white rounded-0"
                   >
-                    Book Seats
+                    {buttonValue}
                   </button>
-                  <Modal
-                    show={modalShow}
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                  >
-                    <Modal.Header closeButton onHide={onHide}>
-                      <Modal.Title id="contained-modal-title-vcenter">
-                        {props.travelsName}
-                      </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      <h4>
-                        {props.fcity} - {props.tcity}
-                      </h4>
-                      <span>
-                        <h5>Bus Type : {props.busType}</h5>
-                      </span>
-                      <span>
-                        <h5>
-                          Total seats:{props.busType === "Sleeper" ? 30 : 50}
-                        </h5>
-                      </span>
-                      <span>
-                        <h5>Available seats:{props.seatAvailability}</h5>
-                      </span>
-                      <Container className="seat-container">
-                        <Row></Row>
-                      </Container>
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button className="text-white" onClick={onHide}>
-                        Close
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
                 </div>
               </Col>
             </Row>
           </Col>
         </Row>
+        <Row className="seat-selector-row d-none">
+          <Col className="seat-selector">
+            <div className="seat-selector-message px-2 mt-4 ms-4 mb-4">
+              <span>
+                Click on an Available seat to proceed with your transaction.
+              </span>
+            </div>
+
+            {props.busType === "Sleeper" ? (
+              <div className="ms-4">
+                <div className="label">Lower Deck</div>
+                <SleeperLayout />
+
+                <div className="label">Upper Deck</div>
+                <SleeperLayout />
+              </div>
+            ) : (
+              <div className="ms-4">
+                <div className="label">Lower Deck</div>
+                <SeatLayout />
+              </div>
+            )}
+          </Col>
+          <Col className="seat-selector pt-4">
+            <div class="legend-wrap">
+              <div class="legend-left clearfix">
+                <div class="seat-legend-wrap sleeper-legend">
+                  <div class="available-sleep"></div>
+                  <div class="legend-label">available</div>
+                </div>
+                <div class="seat-legend-wrap sleeper-legend">
+                  <div class="unavailable-sleep"></div>
+                  <div class="legend-label">unavailable</div>
+                </div>
+                <div class="seat-legend-wrap sleeper-legend ladies-legend">
+                  <div class="ladies-sleep"></div>
+                  <div class="legend-label">female</div>
+                </div>
+              </div>
+            </div>
+          </Col>
+        </Row>
       </Container>
-    </>
+    </div>
   );
 };
 

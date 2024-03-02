@@ -1,0 +1,35 @@
+* {
+    margin: 0%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.layout-container {
+    border: solid 1px black;
+    width: fit-content;
+    height: fit-content;
+}
+
+.seat {
+    border: solid 1px black;
+    margin: 5px;
+    width: 35px;
+    height: 35px;
+    color: grey;
+    display: flex;
+    justify-content: center;
+    /* Aligns items horizontally (center) */
+    align-items: center;
+}
+
+.seat:hover {
+    background-color: rgb(216, 101, 101);
+}
+
+.layout-row {
+    display: flex;
+}
+
+.isle {
+    margin-top: 35px;
+}

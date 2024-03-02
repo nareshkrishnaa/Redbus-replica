@@ -1,4 +1,50 @@
+.busInfoBox:hover {
+  box-shadow: 0px 7px 5px -1px rgba(146, 140, 140, 0.541);
+}
+
 .extra-small {
   font-size: 10px;
   /* Adjust the size as needed */
+}
+
+.seat-selector-row {
+  background-color: #eee;
+}
+
+.seat-selector {
+  height: fit-content;
+
+}
+
+.seat-selector-message {
+  background-color: #dde1ff;
+  padding: 5px;
+  width: fit-content;
+}
+
+.seat-selector .label {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.available-sleep {
+  border: 1px solid #a7a9ac;
+  height: 17px;
+  width: 34px;
+  background-color: #fff;
+  margin-right: 10px;
+}
+
+.unavailable-sleep {
+  height: 17px;
+  width: 34px;
+  background-color: grey;
+  margin-right: 10px;
+}
+
+.ladies-sleep {
+  height: 17px;
+  width: 34px;
+  background-color: pink;
+  margin-right: 10px;
 }

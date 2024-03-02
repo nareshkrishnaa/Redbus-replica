@@ -12,7 +12,8 @@ const SeatSelector = () => {
   return (
     <div>
       <Container>
-        {[...Array(busRow).keys()].map((row) => {
+        <Form.Check />
+        {/* {[...Array(busRow).keys()].map((row) => {
           return (
             <Form className="border">
               {[...Array(busCol).keys()].map((col) => {
@@ -29,7 +30,7 @@ const SeatSelector = () => {
               })}
             </Form>
           );
-        })}
+        })} */}
 
         {/* {[...Array(busRow).keys()].map((row) => {
           return (

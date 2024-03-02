@@ -19,7 +19,7 @@ $spacers: (
   8: $spacer * 12,
   9: $spacer * 16,
   10: $spacer * 32,
-) !default;
+  ) !default;
 // scss-docs-end spacer-variables-maps
 
 $headings-margin-bottom: $spacer * 1;
@@ -31,8 +31,8 @@ $navbar-padding-y: $spacer * 1;
 $navbar-dark-color: #fff;
 
 // Buttons
-$btn-padding-y: 10px;
-$btn-padding-x: 30px;
+// $btn-padding-y: 10px;
+// $btn-padding-x: 30px;
 // $btn-border-radius: 50px;
 // $btn-border-radius-lg: 50px;
 

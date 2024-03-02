@@ -9,19 +9,21 @@ import BookingPage from "./pages/BookingPage";
 import Summa from "./components/Summa";
 import BusInfoBox from "./components/BusInfoBox";
 import SeatSelector from "./components/SeatSelector";
-
+import SeatLayout from "./components/SeatLayout";
+import SleeperLayout from "./components/SleeperLayout";
 function App() {
   return (
     <div className="App">
-      {/* <Navbar />
+      <Navbar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/bookingPage" element={<BookingPage />}></Route>
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
 
-      <SeatSelector />
+      <SeatLayout />
+      <SleeperLayout />
     </div>
   );
 }
