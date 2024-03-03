@@ -7,28 +7,48 @@ const SeatLayout = () => {
     <div className="layout-container mb-4">
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
-          return <div className="seat btn">{(row + 1) * 5}</div>;
+          return (
+            <div id={"seat-" + (row + 1) * 5} className="seat btn">
+              {(row + 1) * 5}
+            </div>
+          );
         })}
       </div>
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
-          return <div className="seat btn">{row * 5 + 4}</div>;
+          return (
+            <div id={"seat-" + (row * 5 + 4)} className="seat btn">
+              {row * 5 + 4}
+            </div>
+          );
         })}
       </div>
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
-          return <div className="seat btn">{row * 5 + 3}</div>;
+          return (
+            <div id={"seat-" + (row * 5 + 3)} className="seat btn">
+              {row * 5 + 3}
+            </div>
+          );
         })}
       </div>
       <div className="isle">
         <div className="layout-row">
           {[...Array(10).keys()].map((row) => {
-            return <div className="seat btn">{row * 5 + 2}</div>;
+            return (
+              <div id={"seat-" + (row * 5 + 2)} className="seat btn">
+                {row * 5 + 2}
+              </div>
+            );
           })}
         </div>
         <div className="layout-row">
           {[...Array(10).keys()].map((row) => {
-            return <div className="seat btn">{row * 5 + 1}</div>;
+            return (
+              <div id={"seat-" + (row * 5 + 1)} className="seat btn">
+                {row * 5 + 1}
+              </div>
+            );
           })}
         </div>
       </div>

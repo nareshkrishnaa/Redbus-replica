@@ -119,10 +119,10 @@ const BusInfoBox = (props) => {
             {props.busType === "Sleeper" ? (
               <div className="ms-4">
                 <div className="label">Lower Deck</div>
-                <SleeperLayout />
+                <SleeperLayout deck="L" />
 
                 <div className="label">Upper Deck</div>
-                <SleeperLayout />
+                <SleeperLayout deck="U" />
               </div>
             ) : (
               <div className="ms-4">
@@ -131,7 +131,7 @@ const BusInfoBox = (props) => {
               </div>
             )}
           </Col>
-          <Col className="seat-selector pt-4">
+          <Col className="seat-selector pt-4 position-relative">
             <div class="legend-wrap">
               <div class="legend-left clearfix">
                 <div class="seat-legend-wrap sleeper-legend">
@@ -148,6 +148,11 @@ const BusInfoBox = (props) => {
                 </div>
               </div>
             </div>
+            {/* <div className="position-absolute mt-auto bottom-0 end-0 m-3">
+              <button className="btn btn-primary text-uppercase text-white">
+                Proceed to book
+              </button>
+            </div> */}
           </Col>
         </Row>
       </Container>
