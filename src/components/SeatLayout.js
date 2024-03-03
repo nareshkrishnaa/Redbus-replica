@@ -4,7 +4,7 @@ import "./SeatLayout.scss";
 
 const SeatLayout = () => {
   return (
-    <div className="layout-container">
+    <div className="layout-container mb-4">
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
           return <div className="seat btn">{(row + 1) * 5}</div>;

@@ -21,9 +21,6 @@ function App() {
           <Route path="/bookingPage" element={<BookingPage />}></Route>
         </Routes>
       </BrowserRouter>
-
-      <SeatLayout />
-      <SleeperLayout />
     </div>
   );
 }

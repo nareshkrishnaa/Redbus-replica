@@ -7,9 +7,13 @@ import SeatLayout from "./SeatLayout";
 
 const BusInfoBox = (props) => {
   const [buttonValue, setButtonValue] = useState("BOOK SEATS");
-  const handleClick = () => {
-    const row = document.querySelector(".seat-selector-row");
-    const button = document.getElementById("book-seats-button");
+  const handleClick = (id) => {
+    console.log(id);
+    const row = document.getElementById(id);
+    console.log(row);
+    const button = document.getElementById(`book-seats-button${props.id}`);
+    console.log(`book-seats-button${props.id}`);
+    console.log(button);
 
     if (row.classList.contains("d-none")) {
       setButtonValue("HIDE SEATS");
@@ -90,8 +94,8 @@ const BusInfoBox = (props) => {
                     <strong>3</strong> Single
                   </p>
                   <button
-                    id="book-seats-button"
-                    onClick={handleClick}
+                    id={"book-seats-button" + props.id}
+                    onClick={() => handleClick(`seatSelector${props.id}`)}
                     className="btn btn-primary text-white rounded-0"
                   >
                     {buttonValue}
@@ -101,7 +105,10 @@ const BusInfoBox = (props) => {
             </Row>
           </Col>
         </Row>
-        <Row className="seat-selector-row d-none">
+        <Row
+          className="seat-selector-row d-none"
+          id={`seatSelector${props.id}`}
+        >
           <Col className="seat-selector">
             <div className="seat-selector-message px-2 mt-4 ms-4 mb-4">
               <span>
