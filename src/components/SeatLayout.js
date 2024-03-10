@@ -3,12 +3,26 @@ import { Badge } from "react-bootstrap";
 import "./SeatLayout.scss";
 
 const SeatLayout = () => {
+  const handleClick = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.style.backgroundColor = "grey";
+      element.style.color = "white";
+    }
+  };
   return (
     <div className="layout-container mb-4">
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
+          const id = "seat-" + (row + 1) * 5;
           return (
-            <div id={"seat-" + (row + 1) * 5} className="seat btn">
+            <div
+              id={id}
+              className="seat btn"
+              onClick={() => {
+                handleClick(id);
+              }}
+            >
               {(row + 1) * 5}
             </div>
           );
@@ -16,8 +30,15 @@ const SeatLayout = () => {
       </div>
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
+          const id = "seat-" + (row * 5 + 4);
           return (
-            <div id={"seat-" + (row * 5 + 4)} className="seat btn">
+            <div
+              id={id}
+              className="seat btn"
+              onClick={() => {
+                handleClick(id);
+              }}
+            >
               {row * 5 + 4}
             </div>
           );
@@ -25,8 +46,15 @@ const SeatLayout = () => {
       </div>
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
+          const id = "seat-" + (row * 5 + 3);
           return (
-            <div id={"seat-" + (row * 5 + 3)} className="seat btn">
+            <div
+              id={id}
+              className="seat btn"
+              onClick={() => {
+                handleClick(id);
+              }}
+            >
               {row * 5 + 3}
             </div>
           );
@@ -35,8 +63,15 @@ const SeatLayout = () => {
       <div className="isle">
         <div className="layout-row">
           {[...Array(10).keys()].map((row) => {
+            const id = "seat-" + (row * 5 + 2);
             return (
-              <div id={"seat-" + (row * 5 + 2)} className="seat btn">
+              <div
+                id={id}
+                className="seat btn"
+                onClick={() => {
+                  handleClick(id);
+                }}
+              >
                 {row * 5 + 2}
               </div>
             );
@@ -44,8 +79,15 @@ const SeatLayout = () => {
         </div>
         <div className="layout-row">
           {[...Array(10).keys()].map((row) => {
+            const id = "seat-" + (row * 5 + 1);
             return (
-              <div id={"seat-" + (row * 5 + 1)} className="seat btn">
+              <div
+                id={id}
+                className="seat btn"
+                onClick={() => {
+                  handleClick(id);
+                }}
+              >
                 {row * 5 + 1}
               </div>
             );
