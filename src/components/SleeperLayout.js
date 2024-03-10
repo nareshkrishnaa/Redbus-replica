@@ -5,8 +5,15 @@ const SleeperLayout = (props) => {
   const handleClick = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.style.backgroundColor = "grey";
-      element.style.color = "white";
+      if (element.style.backgroundColor != "grey") {
+        console.log("condition 1");
+        element.style.backgroundColor = "grey";
+        element.style.color = "white";
+      } else {
+        element.style.backgroundColor = "white";
+        element.style.color = "grey";
+        console.log("condition 2");
+      }
     }
   };
   return (

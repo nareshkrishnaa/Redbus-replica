@@ -119,15 +119,21 @@ const BusInfoBox = (props) => {
             {props.busType === "Sleeper" ? (
               <div className="ms-4">
                 <div className="label">Lower Deck</div>
-                <SleeperLayout deck="L" />
+                <SleeperLayout
+                  deck="L"
+                  seatAvailability={props.seatAvailability}
+                />
 
                 <div className="label">Upper Deck</div>
-                <SleeperLayout deck="U" />
+                <SleeperLayout
+                  deck="U"
+                  seatAvailability={props.seatAvailability}
+                />
               </div>
             ) : (
               <div className="ms-4">
                 <div className="label">Lower Deck</div>
-                <SeatLayout />
+                <SeatLayout seatAvailability={props.seatAvailability} />
               </div>
             )}
           </Col>
