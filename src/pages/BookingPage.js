@@ -5,6 +5,7 @@ import BusInfoBox from "../components/BusInfoBox";
 import { useLocation } from "react-router-dom";
 import Filter from "../components/Filter";
 import busDetails, { travelsNameArray, eat, ebt } from "../data/randomData";
+import "./BookingPage.scss";
 
 const BookingPage = () => {
   const location = useLocation();
@@ -67,6 +68,22 @@ const BookingPage = () => {
   return (
     <div>
       <Container fluid>
+        <Row className="border-top border-bottom ps-6 py-4">
+          <div className="d-flex gap-3">
+            <div className="cityHeadingstyle">{fcity}</div>
+            <div>
+              <i class="bi bi-arrow-right"></i>
+            </div>
+            <div className="cityHeadingstyle">{tcity}</div>
+            <div>
+              <i class="bi bi-chevron-left"></i>
+            </div>
+            <div className="cityHeadingstyle">10 Mar</div>
+            <div>
+              <i class="bi bi-chevron-right"></i>
+            </div>
+          </div>
+        </Row>
         <Row>
           <Col lg={2}>
             <Filter

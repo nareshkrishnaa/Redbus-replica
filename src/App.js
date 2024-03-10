@@ -21,6 +21,7 @@ function App() {
           <Route path="/bookingPage" element={<BookingPage />}></Route>
         </Routes>
       </BrowserRouter>
+      {/* <Summa /> */}
     </div>
   );
 }
