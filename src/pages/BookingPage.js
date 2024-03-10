@@ -12,6 +12,26 @@ const BookingPage = () => {
   const cityData = location.state;
   let fcity = cityData.fromCity;
   let tcity = cityData.toCity;
+  const formatDate = (date) => {
+    const options = { day: "2-digit", month: "short" };
+    return new Intl.DateTimeFormat("en-US", options).format(date);
+  };
+
+  const [date, setDate] = useState(new Date());
+  const formattedDate = formatDate(date);
+  const [displayDate, setDisplayDate] = useState(formattedDate);
+  const handleDateAdd = () => {
+    const newDate = new Date(date);
+    newDate.setDate(newDate.getDate() + 1);
+    setDate(newDate);
+    setDisplayDate(formatDate(newDate));
+  };
+  const handleDateSub = () => {
+    const newDate = new Date(date);
+    newDate.setDate(newDate.getDate() - 1);
+    setDate(newDate);
+    setDisplayDate(formatDate(newDate));
+  };
 
   const getFstop = (fcity) => {
     const fcityObj = cities.find((city) => {
@@ -76,11 +96,11 @@ const BookingPage = () => {
             </div>
             <div className="cityHeadingstyle">{tcity}</div>
             <div>
-              <i class="bi bi-chevron-left"></i>
+              <i onClick={handleDateSub} class="bi bi-chevron-left"></i>
             </div>
-            <div className="cityHeadingstyle">10 Mar</div>
+            <div className="cityHeadingstyle">{displayDate}</div>
             <div>
-              <i class="bi bi-chevron-right"></i>
+              <i onClick={handleDateAdd} class="bi bi-chevron-right"></i>
             </div>
           </div>
         </Row>
