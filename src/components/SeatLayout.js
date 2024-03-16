@@ -22,7 +22,6 @@ const SeatLayout = (props) => {
   selectRandomSeats(seatArr, seatAvailability);
 
   const [availableSeats, setAvailableSeats] = useState(seatArr);
-  console.log("available seats", seatAvailability, availableSeats);
 
   const unavailableSeats = [];
   seatArr.forEach((value, index) => {
@@ -31,20 +30,26 @@ const SeatLayout = (props) => {
     }
   });
 
-  console.log("unavailable seats", unavailableSeats);
-
   const handleClick = (id) => {
+    console.log("handle click in");
     const element = document.getElementById(id);
     if (element) {
-      if (element.style.backgroundColor != "grey") {
-        element.style.backgroundColor = "grey";
+      const computedStyle = window.getComputedStyle(element);
+      const backgroundColor = computedStyle.backgroundColor;
+      if (
+        backgroundColor === "rgb(255, 255, 255)" ||
+        backgroundColor === "white"
+      ) {
+        element.style.backgroundColor = "green";
         element.style.color = "white";
       } else {
         element.style.backgroundColor = "white";
         element.style.color = "grey";
       }
     }
+    console.log("handle click out");
   };
+
   return (
     <div className="layout-container mb-4">
       <div className="layout-row">

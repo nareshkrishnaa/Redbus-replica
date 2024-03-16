@@ -6,6 +6,17 @@ import SleeperLayout from "./SleeperLayout";
 import SeatLayout from "./SeatLayout";
 
 const BusInfoBox = (props) => {
+  const splitIntRandomly = (input) => {
+    const randomNumber = Math.floor(Math.random() * input);
+
+    return [randomNumber, input - randomNumber];
+  };
+
+  const noOfUnAvailableSeats = 30 - props.seatAvailability;
+  const [lowerDeckOccupiedSeatsNo, upperDeckOccupiedSeatsNo] =
+    splitIntRandomly(noOfUnAvailableSeats);
+  console.log("-------sleeper seat split----------");
+  console.log(lowerDeckOccupiedSeatsNo, upperDeckOccupiedSeatsNo);
   const [buttonValue, setButtonValue] = useState("BOOK SEATS");
   const handleClick = (id) => {
     console.log(id);
@@ -121,12 +132,15 @@ const BusInfoBox = (props) => {
                 <div className="label">Lower Deck</div>
                 <SleeperLayout
                   deck="L"
+                  lowerDeckOccupiedSeatsNo={lowerDeckOccupiedSeatsNo}
+                  upperDeckOccupiedSeatsNo={upperDeckOccupiedSeatsNo}
                   seatAvailability={props.seatAvailability}
                 />
-
                 <div className="label">Upper Deck</div>
                 <SleeperLayout
                   deck="U"
+                  lowerDeckOccupiedSeatsNo={lowerDeckOccupiedSeatsNo}
+                  upperDeckOccupiedSeatsNo={upperDeckOccupiedSeatsNo}
                   seatAvailability={props.seatAvailability}
                 />
               </div>

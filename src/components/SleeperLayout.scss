@@ -20,12 +20,17 @@
     justify-content: center;
     /* Aligns items horizontally (center) */
     align-items: center;
-    background-color: #fff;
+    background-color: white;
 
 }
 
-.seat:hover {
-    background-color: rgb(216, 101, 101);
+.sleep-seat:hover {
+    cursor: pointer;
+}
+
+.grey-background {
+    background-color: grey;
+    color: white;
 }
 
 .layout-row {
