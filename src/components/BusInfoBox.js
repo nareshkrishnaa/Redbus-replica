@@ -16,6 +16,7 @@ const BusInfoBox = (props) => {
   const [lowerDeckOccupiedSeatsNo, upperDeckOccupiedSeatsNo] =
     splitIntRandomly(noOfUnAvailableSeats);
   console.log("-------sleeper seat split----------");
+  console.log("available seat = ", props.seatAvailability);
   console.log(lowerDeckOccupiedSeatsNo, upperDeckOccupiedSeatsNo);
   const [buttonValue, setButtonValue] = useState("BOOK SEATS");
   const handleClick = (id) => {

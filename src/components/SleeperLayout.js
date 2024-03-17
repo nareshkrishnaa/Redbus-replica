@@ -41,10 +41,11 @@ const SleeperLayout = (props) => {
 
   const handleClick = (id) => {
     const element = document.getElementById(id);
-    console.log(element);
     if (element) {
       const computedStyle = window.getComputedStyle(element);
       const backgroundColor = computedStyle.backgroundColor;
+
+      // Check if the background color is white or rgb(255, 255, 255)
       if (
         backgroundColor === "rgb(255, 255, 255)" ||
         backgroundColor === "white"
@@ -52,10 +53,15 @@ const SleeperLayout = (props) => {
         console.log("condition 1", backgroundColor);
         element.style.backgroundColor = "green";
         element.style.color = "white";
-      } else if (backgroundColor === "green") {
+      }
+      // Check if the background color is green or rgb(0, 128, 0)
+      else if (
+        backgroundColor === "green" ||
+        backgroundColor === "rgb(0, 128, 0)"
+      ) {
+        console.log("condition 2", backgroundColor);
         element.style.backgroundColor = "white";
         element.style.color = "grey";
-        console.log("condition 2", backgroundColor);
       }
     }
   };
@@ -66,7 +72,7 @@ const SleeperLayout = (props) => {
         {[...Array(5).keys()].map((row) => {
           const id = `${props.deck}${(row + 1) * 3}`;
           const value = (row + 1) * 3;
-          const isGrey = indexes.includes(value);
+          const isGrey = indexes.includes(value - 1);
           return (
             <div
               id={id}
@@ -84,7 +90,7 @@ const SleeperLayout = (props) => {
         {[...Array(5).keys()].map((row) => {
           const id = `${props.deck}${row * 3 + 2}`;
           const value = row * 3 + 2;
-          const isGrey = indexes.includes(value);
+          const isGrey = indexes.includes(value - 1);
           return (
             <div
               id={id}
@@ -103,7 +109,7 @@ const SleeperLayout = (props) => {
           {[...Array(5).keys()].map((row) => {
             const id = `${props.deck}${row * 3 + 1}`;
             const value = row * 3 + 1;
-            const isGrey = indexes.includes(value);
+            const isGrey = indexes.includes(value - 1);
             return (
               <div
                 id={id}
