@@ -1,18 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SleeperLayout.scss";
 
 const SleeperLayout = (props) => {
+  let selectedSeats = new Array();
   let occupiedSeatsNo;
   let indexes = [];
   let seatArr = new Array(15).fill(0);
   if (props.deck === "L") {
     occupiedSeatsNo = props.lowerDeckOccupiedSeatsNo;
-    console.log("-------deck occupied seats--------");
-    console.log(occupiedSeatsNo);
   } else {
     occupiedSeatsNo = props.upperDeckOccupiedSeatsNo;
-    console.log("-------deck occupied seats--------");
-    console.log(occupiedSeatsNo);
   }
 
   function fillRandomIndexes(arr, n) {
@@ -41,27 +38,40 @@ const SleeperLayout = (props) => {
 
   const handleClick = (id) => {
     const element = document.getElementById(id);
+    const textContent = element.textContent.trim();
+    const value = parseInt(textContent);
     if (element) {
       const computedStyle = window.getComputedStyle(element);
       const backgroundColor = computedStyle.backgroundColor;
-
       // Check if the background color is white or rgb(255, 255, 255)
       if (
         backgroundColor === "rgb(255, 255, 255)" ||
         backgroundColor === "white"
       ) {
-        console.log("condition 1", backgroundColor);
         element.style.backgroundColor = "green";
         element.style.color = "white";
+        //Add seat value to selectedSeats array
+
+        if (!selectedSeats.includes(value)) {
+          selectedSeats = [...selectedSeats, value];
+        }
+
+        console.log("selected seats", selectedSeats);
       }
       // Check if the background color is green or rgb(0, 128, 0)
       else if (
         backgroundColor === "green" ||
         backgroundColor === "rgb(0, 128, 0)"
       ) {
-        console.log("condition 2", backgroundColor);
         element.style.backgroundColor = "white";
         element.style.color = "grey";
+        //Remove seat value from selectedSeats array
+
+        if (selectedSeats.includes(value)) {
+          selectedSeats = selectedSeats.filter((seat) => seat !== value);
+        }
+
+        console.log("selected seats", selectedSeats);
       }
     }
   };

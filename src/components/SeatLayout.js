@@ -3,7 +3,9 @@ import { Badge } from "react-bootstrap";
 import "./SeatLayout.scss";
 
 const SeatLayout = (props) => {
+  let selectedSeats = new Array();
   const seatAvailability = props.seatAvailability;
+  const unAvailableSeatNo = 50 - seatAvailability;
   let seatArr = new Array(50).fill(0);
   function selectRandomSeats(arr, seatAvailability) {
     const selectedIndexes = [];
@@ -19,7 +21,7 @@ const SeatLayout = (props) => {
   }
 
   // Select seats based on seatAvailability and assign value 1 to them
-  selectRandomSeats(seatArr, seatAvailability);
+  selectRandomSeats(seatArr, unAvailableSeatNo);
 
   const [availableSeats, setAvailableSeats] = useState(seatArr);
 
@@ -33,18 +35,42 @@ const SeatLayout = (props) => {
   const handleClick = (id) => {
     console.log("handle click in");
     const element = document.getElementById(id);
+    const textContent = element.textContent.trim();
+    const value = parseInt(textContent);
     if (element) {
       const computedStyle = window.getComputedStyle(element);
       const backgroundColor = computedStyle.backgroundColor;
+      console.log("positive===element present");
+      // Check if the background color is white or rgb(255, 255, 255)
       if (
         backgroundColor === "rgb(255, 255, 255)" ||
         backgroundColor === "white"
       ) {
         element.style.backgroundColor = "green";
         element.style.color = "white";
-      } else {
+        //Add seat value to selectedSeats array
+        console.log("bg color ======= white");
+        console.log("Background Color:", backgroundColor);
+        if (!selectedSeats.includes(value)) {
+          selectedSeats = [...selectedSeats, value];
+        }
+
+        console.log("selected seats", selectedSeats);
+      }
+      // Check if the background color is green or rgb(0, 128, 0)
+      else if (
+        backgroundColor === "green" ||
+        backgroundColor === "rgb(0, 128, 0)"
+      ) {
         element.style.backgroundColor = "white";
         element.style.color = "grey";
+        //Remove seat value from selectedSeats array
+
+        if (selectedSeats.includes(value)) {
+          selectedSeats = selectedSeats.filter((seat) => seat !== value);
+        }
+
+        console.log("selected seats", selectedSeats);
       }
     }
     console.log("handle click out");
@@ -60,7 +86,7 @@ const SeatLayout = (props) => {
           return (
             <div
               id={id}
-              className="seat btn"
+              className="seat"
               onClick={() => {
                 handleClick(id);
               }}
@@ -83,7 +109,7 @@ const SeatLayout = (props) => {
           return (
             <div
               id={id}
-              className="seat btn"
+              className="seat"
               onClick={() => {
                 handleClick(id);
               }}
@@ -106,7 +132,7 @@ const SeatLayout = (props) => {
           return (
             <div
               id={id}
-              className="seat btn"
+              className="seat"
               onClick={() => {
                 handleClick(id);
               }}
@@ -130,7 +156,7 @@ const SeatLayout = (props) => {
             return (
               <div
                 id={id}
-                className="seat btn"
+                className="seat"
                 onClick={() => {
                   handleClick(id);
                 }}
@@ -153,7 +179,7 @@ const SeatLayout = (props) => {
             return (
               <div
                 id={id}
-                className="seat btn"
+                className="seat"
                 onClick={() => {
                   handleClick(id);
                 }}
