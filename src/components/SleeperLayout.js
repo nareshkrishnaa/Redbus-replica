@@ -17,7 +17,7 @@ const SleeperLayout = (props) => {
           return (
             <div
               id={id}
-              className="sleep-seat btn"
+              className="sleep-seat"
               onClick={() => {
                 handleClick(id);
               }}
@@ -33,7 +33,7 @@ const SleeperLayout = (props) => {
           return (
             <div
               id={id}
-              className="sleep-seat btn"
+              className="sleep-seat"
               onClick={() => {
                 handleClick(id);
               }}
@@ -51,7 +51,7 @@ const SleeperLayout = (props) => {
             return (
               <div
                 id={id}
-                className="sleep-seat btn"
+                className="sleep-seat"
                 onClick={() => {
                   handleClick(id);
                 }}

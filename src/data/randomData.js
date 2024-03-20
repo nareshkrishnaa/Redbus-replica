@@ -97,7 +97,48 @@ const arrayOfBusDetails = (travelsArray) => {
     seatAvailability: getSeatAvailability(),
   }));
 };
-const busDetails = arrayOfBusDetails(travelsNameArray);
+let busDetails = arrayOfBusDetails(travelsNameArray);
+const occupiedSeatsArray = (n, size) => {
+  // Create an array of size 50 with all elements initialized to 0
+  let array = new Array(size).fill(0);
+
+  // Assign n number of random indexes as 1
+  let randomIndexes = [];
+  for (let i = 0; i < Math.min(n, size); i++) {
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * size);
+    } while (randomIndexes.includes(randomIndex));
+    randomIndexes.push(randomIndex);
+    array[randomIndex] = 1;
+  }
+
+  // Create another array with the indexes where the value is 1
+  let indexesWithValueOne = [];
+  array.forEach((value, index) => {
+    if (value === 1) {
+      indexesWithValueOne.push(index + 1);
+    }
+  });
+
+  return indexesWithValueOne;
+};
+busDetails = busDetails.map((busDetail) => {
+  let availableSeats = busDetail.seatAvailability;
+  let occupiedSeatsArr;
+  if (busDetail.busType === "Seater") {
+    let unAvailableSeatNo = 50 - availableSeats;
+    occupiedSeatsArr = occupiedSeatsArray(unAvailableSeatNo, 50);
+  } else {
+    let unAvailableSeatNo = 30 - availableSeats;
+    occupiedSeatsArr = occupiedSeatsArray(unAvailableSeatNo, 30);
+  }
+  return {
+    ...busDetail, // Spread existing properties of busDetail
+    occupiedSeatsArr, // Add new property
+  };
+});
+
 console.log("------randomData---------------", busDetails);
 export default busDetails;
 export { ebt, eat };

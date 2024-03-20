@@ -18,7 +18,7 @@ const SeatLayout = () => {
           return (
             <div
               id={id}
-              className="seat btn"
+              className="seat"
               onClick={() => {
                 handleClick(id);
               }}
@@ -34,7 +34,7 @@ const SeatLayout = () => {
           return (
             <div
               id={id}
-              className="seat btn"
+              className="seat"
               onClick={() => {
                 handleClick(id);
               }}
@@ -50,7 +50,7 @@ const SeatLayout = () => {
           return (
             <div
               id={id}
-              className="seat btn"
+              className="seat"
               onClick={() => {
                 handleClick(id);
               }}
@@ -67,7 +67,7 @@ const SeatLayout = () => {
             return (
               <div
                 id={id}
-                className="seat btn"
+                className="seat"
                 onClick={() => {
                   handleClick(id);
                 }}
@@ -83,7 +83,7 @@ const SeatLayout = () => {
             return (
               <div
                 id={id}
-                className="seat btn"
+                className="seat"
                 onClick={() => {
                   handleClick(id);
                 }}
