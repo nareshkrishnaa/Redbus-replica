@@ -36,6 +36,11 @@ const BusInfoBox = (props) => {
         setToggleArr([0, 0]);
       }
     } else {
+      if (toggleArr[1] == 0) {
+        setToggleArr([0, 1]);
+      } else {
+        setToggleArr([0, 0]);
+      }
     }
   };
   return (
@@ -184,16 +189,38 @@ const BusInfoBox = (props) => {
             <Container className="mt-3">
               <Row>
                 <div className="col d-flex flex-column">
-                  <h6 className="bpoint-heading" onClick={() => {}}>
+                  <h6
+                    className="bpoint-heading"
+                    onClick={() => {
+                      toggleOnClick(1);
+                    }}
+                  >
                     BOARDING POINT
                   </h6>
-                  <div class="red-toggle d-none"></div>
+                  <div
+                    className={
+                      toggleArr[0] === 0
+                        ? "red-toggle d-none"
+                        : "red-toggle d-block"
+                    }
+                  ></div>
                 </div>
                 <div className="col d-flex flex-column">
-                  <h6 className="bpoint-heading" onClick={() => {}}>
+                  <h6
+                    className="bpoint-heading"
+                    onClick={() => {
+                      toggleOnClick(2);
+                    }}
+                  >
                     DROPPING POINT
                   </h6>
-                  <div class="red-toggle d-none"></div>
+                  <div
+                    className={
+                      toggleArr[1] === 0
+                        ? "red-toggle d-none"
+                        : "red-toggle d-block"
+                    }
+                  ></div>
                 </div>
               </Row>
             </Container>
