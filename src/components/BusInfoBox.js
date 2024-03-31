@@ -26,6 +26,18 @@ const BusInfoBox = (props) => {
       button.style.backgroundColor = "var(--bs-primary)";
     }
   };
+
+  const [toggleArr, setToggleArr] = useState([0, 0]);
+  const toggleOnClick = (n) => {
+    if (n === 1) {
+      if (toggleArr[0] == 0) {
+        setToggleArr([1, 0]);
+      } else {
+        setToggleArr([0, 0]);
+      }
+    } else {
+    }
+  };
   return (
     <div className="busInfoBox mb-3">
       <Container fluid>
@@ -169,6 +181,22 @@ const BusInfoBox = (props) => {
                 </div>
               </div>
             </div>
+            <Container className="mt-3">
+              <Row>
+                <div className="col d-flex flex-column">
+                  <h6 className="bpoint-heading" onClick={() => {}}>
+                    BOARDING POINT
+                  </h6>
+                  <div class="red-toggle d-none"></div>
+                </div>
+                <div className="col d-flex flex-column">
+                  <h6 className="bpoint-heading" onClick={() => {}}>
+                    DROPPING POINT
+                  </h6>
+                  <div class="red-toggle d-none"></div>
+                </div>
+              </Row>
+            </Container>
             {/* <div className="position-absolute mt-auto bottom-0 end-0 m-3">
               <button className="btn btn-primary text-uppercase text-white">
                 Proceed to book
