@@ -133,6 +133,8 @@ const BookingPage = () => {
                   noOfreviews={item.noOfreviews}
                   ticketPrice={item.ticketPrice}
                   seatAvailability={item.seatAvailability}
+                  occupiedSeatsArr={item.occupiedSeatsArr}
+                  femaleSeatsArr={item.femaleSeatsArr}
                 />
               );
             })}

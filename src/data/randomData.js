@@ -139,6 +139,34 @@ busDetails = busDetails.map((busDetail) => {
   };
 });
 
+busDetails = busDetails.map((busDetail) => {
+  let occupiedSeatsArr = busDetail.occupiedSeatsArr;
+  let size = occupiedSeatsArr.length;
+  let randomSize = Math.min(Math.floor(Math.random() * size), size); // Adjust randomSize to be within the bounds
+  let femaleSeatsArr = getFemaleSeatArr(occupiedSeatsArr, randomSize);
+  return {
+    ...busDetail,
+    femaleSeatsArr,
+  };
+
+  function getFemaleSeatArr(array, n) {
+    let newArr = [];
+    // Copy the original array to prevent modification of the original
+    let availableIndexes = array.slice();
+    // If n is greater than the array length, return the entire array
+    if (n >= array.length) {
+      return availableIndexes;
+    }
+    for (let i = 0; i < n; i++) {
+      // Generate a random index within the available indexes
+      let randomIndex = Math.floor(Math.random() * availableIndexes.length);
+      // Remove the selected index from availableIndexes and add it to newArr
+      newArr.push(availableIndexes.splice(randomIndex, 1)[0]);
+    }
+    return newArr;
+  }
+});
+
 console.log("------randomData---------------", busDetails);
 export default busDetails;
 export { ebt, eat };

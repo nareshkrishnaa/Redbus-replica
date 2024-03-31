@@ -2,7 +2,9 @@ import React from "react";
 import { Badge } from "react-bootstrap";
 import "./SeatLayout.scss";
 
-const SeatLayout = () => {
+const SeatLayout = (props) => {
+  const occupiedSeatsArr = props.occupiedSeatsArr;
+  const femaleSeatsArr = props.femaleSeatsArr;
   const handleClick = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -15,15 +17,24 @@ const SeatLayout = () => {
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
           const id = "seat-" + (row + 1) * 5;
+          let className = "seat";
+          const value = (row + 1) * 5;
+          if (occupiedSeatsArr.includes(value)) {
+            if (femaleSeatsArr.includes(value)) {
+              className += " pink-background";
+            } else {
+              className += " grey-background";
+            }
+          }
           return (
             <div
               id={id}
-              className="seat"
+              className={className}
               onClick={() => {
                 handleClick(id);
               }}
             >
-              {(row + 1) * 5}
+              {value}
             </div>
           );
         })}
@@ -31,15 +42,24 @@ const SeatLayout = () => {
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
           const id = "seat-" + (row * 5 + 4);
+          let className = "seat";
+          const value = row * 5 + 4;
+          if (occupiedSeatsArr.includes(value)) {
+            if (femaleSeatsArr.includes(value)) {
+              className += " pink-background";
+            } else {
+              className += " grey-background";
+            }
+          }
           return (
             <div
               id={id}
-              className="seat"
+              className={className}
               onClick={() => {
                 handleClick(id);
               }}
             >
-              {row * 5 + 4}
+              {value}
             </div>
           );
         })}
@@ -47,15 +67,24 @@ const SeatLayout = () => {
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
           const id = "seat-" + (row * 5 + 3);
+          let className = "seat";
+          const value = row * 5 + 3;
+          if (occupiedSeatsArr.includes(value)) {
+            if (femaleSeatsArr.includes(value)) {
+              className += " pink-background";
+            } else {
+              className += " grey-background";
+            }
+          }
           return (
             <div
               id={id}
-              className="seat"
+              className={className}
               onClick={() => {
                 handleClick(id);
               }}
             >
-              {row * 5 + 3}
+              {value}
             </div>
           );
         })}
@@ -64,15 +93,24 @@ const SeatLayout = () => {
         <div className="layout-row">
           {[...Array(10).keys()].map((row) => {
             const id = "seat-" + (row * 5 + 2);
+            let className = "seat";
+            const value = row * 5 + 2;
+            if (occupiedSeatsArr.includes(value)) {
+              if (femaleSeatsArr.includes(value)) {
+                className += " pink-background";
+              } else {
+                className += " grey-background";
+              }
+            }
             return (
               <div
                 id={id}
-                className="seat"
+                className={className}
                 onClick={() => {
                   handleClick(id);
                 }}
               >
-                {row * 5 + 2}
+                {value}
               </div>
             );
           })}
@@ -80,15 +118,24 @@ const SeatLayout = () => {
         <div className="layout-row">
           {[...Array(10).keys()].map((row) => {
             const id = "seat-" + (row * 5 + 1);
+            let className = "seat";
+            const value = row * 5 + 1;
+            if (occupiedSeatsArr.includes(value)) {
+              if (femaleSeatsArr.includes(value)) {
+                className += " pink-background";
+              } else {
+                className += " grey-background";
+              }
+            }
             return (
               <div
                 id={id}
-                className="seat"
+                className={className}
                 onClick={() => {
                   handleClick(id);
                 }}
               >
-                {row * 5 + 1}
+                {value}
               </div>
             );
           })}
