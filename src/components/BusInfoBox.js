@@ -7,6 +7,7 @@ import SeatLayout from "./SeatLayout";
 
 const BusInfoBox = (props) => {
   const [buttonValue, setButtonValue] = useState("BOOK SEATS");
+  const [selectedSeatsHook, setSelectedSeatsHook] = useState([]);
   const handleClick = (id) => {
     console.log(id);
     const row = document.getElementById(id);
@@ -90,9 +91,9 @@ const BusInfoBox = (props) => {
                   <p>
                     <strong>{props.seatAvailability}</strong> seats Available
                   </p>
-                  <p>
+                  {/* <p>
                     <strong>3</strong> Single
-                  </p>
+                  </p> */}
                   <button
                     id={"book-seats-button" + props.id}
                     onClick={() => handleClick(`seatSelector${props.id}`)}
@@ -123,6 +124,9 @@ const BusInfoBox = (props) => {
                   deck="L"
                   occupiedSeatsArr={props.occupiedSeatsArr}
                   femaleSeatsArr={props.femaleSeatsArr}
+                  selectedSeatsHook={selectedSeatsHook}
+                  setSelectedSeatsHook={setSelectedSeatsHook}
+                  travelsName={props.travelsName}
                 />
 
                 <div className="label">Upper Deck</div>
@@ -130,6 +134,9 @@ const BusInfoBox = (props) => {
                   deck="U"
                   occupiedSeatsArr={props.occupiedSeatsArr}
                   femaleSeatsArr={props.femaleSeatsArr}
+                  selectedSeatsHook={selectedSeatsHook}
+                  setSelectedSeatsHook={setSelectedSeatsHook}
+                  travelsName={props.travelsName}
                 />
               </div>
             ) : (
@@ -138,22 +145,25 @@ const BusInfoBox = (props) => {
                 <SeatLayout
                   occupiedSeatsArr={props.occupiedSeatsArr}
                   femaleSeatsArr={props.femaleSeatsArr}
+                  selectedSeatsHook={selectedSeatsHook}
+                  setSelectedSeatsHook={setSelectedSeatsHook}
+                  travelsName={props.travelsName}
                 />
               </div>
             )}
           </Col>
           <Col className="seat-selector pt-4 position-relative">
             <div class="legend-wrap">
-              <div class="legend-left clearfix">
-                <div class="seat-legend-wrap sleeper-legend">
+              <div class="legend-left clearfix d-flex gap-2">
+                <div class="seat-legend-wrap sleeper-legend d-flex flex-column">
                   <div class="available-sleep"></div>
                   <div class="legend-label">available</div>
                 </div>
-                <div class="seat-legend-wrap sleeper-legend">
+                <div class="seat-legend-wrap sleeper-legend d-flex flex-column">
                   <div class="unavailable-sleep"></div>
                   <div class="legend-label">unavailable</div>
                 </div>
-                <div class="seat-legend-wrap sleeper-legend ladies-legend">
+                <div class="seat-legend-wrap sleeper-legend ladies-legend d-flex flex-column">
                   <div class="ladies-sleep"></div>
                   <div class="legend-label">female</div>
                 </div>

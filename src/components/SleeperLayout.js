@@ -36,9 +36,22 @@ const SleeperLayout = (props) => {
 
   const handleClick = (id) => {
     const element = document.getElementById(id);
+    let value = element.textContent;
+    value = props.deck + "-" + value;
     if (element) {
-      element.style.backgroundColor = "grey";
-      element.style.color = "white";
+      if (!props.selectedSeatsHook.includes(value)) {
+        props.setSelectedSeatsHook((prev) => {
+          return [...prev, value];
+        });
+        element.style.backgroundColor = "black";
+        element.style.color = "white";
+      } else {
+        props.setSelectedSeatsHook((prev) => {
+          return prev.filter((seat) => seat !== value);
+        });
+        element.style.backgroundColor = "white";
+        element.style.color = "grey";
+      }
     }
   };
   return (

@@ -7,9 +7,28 @@ const SeatLayout = (props) => {
   const femaleSeatsArr = props.femaleSeatsArr;
   const handleClick = (id) => {
     const element = document.getElementById(id);
+    console.log("seat clicked inside handle click: " + id);
+    let value = element.textContent;
     if (element) {
-      element.style.backgroundColor = "grey";
-      element.style.color = "white";
+      console.log("seat clicked inside element: " + id);
+
+      if (!props.selectedSeatsHook.includes(value)) {
+        props.setSelectedSeatsHook((prev) => {
+          return [...prev, value];
+        });
+        console.log("seat clicked inside if : " + id);
+
+        element.style.backgroundColor = "black";
+        element.style.color = "white";
+      } else {
+        props.setSelectedSeatsHook((prev) => {
+          return prev.filter((seat) => seat !== value);
+        });
+        console.log("seat clicked inside else : " + id);
+
+        element.style.backgroundColor = "white";
+        element.style.color = "grey";
+      }
     }
   };
   return (
@@ -31,6 +50,7 @@ const SeatLayout = (props) => {
               id={id}
               className={className}
               onClick={() => {
+                console.log("seat clicked : " + id);
                 handleClick(id);
               }}
             >
