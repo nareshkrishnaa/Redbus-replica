@@ -35,7 +35,7 @@ const SeatLayout = (props) => {
     <div className="layout-container mb-4">
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
-          const id = "seat-" + (row + 1) * 5;
+          const id = props.travelsName + "-" + (row + 1) * 5;
           let className = "seat";
           const value = (row + 1) * 5;
           if (occupiedSeatsArr.includes(value)) {
@@ -61,7 +61,7 @@ const SeatLayout = (props) => {
       </div>
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
-          const id = "seat-" + (row * 5 + 4);
+          const id = props.travelsName + "-" + (row * 5 + 4);
           let className = "seat";
           const value = row * 5 + 4;
           if (occupiedSeatsArr.includes(value)) {
@@ -86,7 +86,7 @@ const SeatLayout = (props) => {
       </div>
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
-          const id = "seat-" + (row * 5 + 3);
+          const id = props.travelsName + "-" + (row * 5 + 3);
           let className = "seat";
           const value = row * 5 + 3;
           if (occupiedSeatsArr.includes(value)) {
@@ -112,7 +112,7 @@ const SeatLayout = (props) => {
       <div className="isle">
         <div className="layout-row">
           {[...Array(10).keys()].map((row) => {
-            const id = "seat-" + (row * 5 + 2);
+            const id = props.travelsName + "-" + (row * 5 + 2);
             let className = "seat";
             const value = row * 5 + 2;
             if (occupiedSeatsArr.includes(value)) {
@@ -137,7 +137,7 @@ const SeatLayout = (props) => {
         </div>
         <div className="layout-row">
           {[...Array(10).keys()].map((row) => {
-            const id = "seat-" + (row * 5 + 1);
+            const id = props.travelsName + "-" + (row * 5 + 1);
             let className = "seat";
             const value = row * 5 + 1;
             if (occupiedSeatsArr.includes(value)) {

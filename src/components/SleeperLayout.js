@@ -2,12 +2,19 @@ import React from "react";
 import "./SleeperLayout.scss";
 
 const SleeperLayout = (props) => {
+  let newVar;
+  {
+    // completely independent logic
+  }
   const occupiedSeatsArr = props.occupiedSeatsArr;
   const femaleSeatsArr = props.femaleSeatsArr;
   let occupiedSeatsArrDeck = [],
     femaleSeatsArrDeck = [];
   const deck = props.deck;
-
+  let newVar2;
+  {
+    // completely independent logic
+  }
   if (deck == "L") {
     occupiedSeatsArr.map((item) => {
       if (item < 16) {
@@ -58,7 +65,7 @@ const SleeperLayout = (props) => {
     <div className="layout-container mb-2">
       <div className="layout-row">
         {[...Array(5).keys()].map((row) => {
-          const id = `${props.deck}${(row + 1) * 3}`;
+          const id = `${props.travelsName}-${props.deck}${(row + 1) * 3}`;
           const value = (row + 1) * 3;
           let className = "sleep-seat";
           if (occupiedSeatsArrDeck.includes(value)) {
@@ -83,7 +90,7 @@ const SleeperLayout = (props) => {
       </div>
       <div className="layout-row">
         {[...Array(5).keys()].map((row) => {
-          const id = `${props.deck}${row * 3 + 2}`;
+          const id = `${props.travelsName}-${props.deck}${row * 3 + 2}`;
           const value = row * 3 + 2;
           let className = "sleep-seat";
           if (occupiedSeatsArrDeck.includes(value)) {
@@ -109,7 +116,7 @@ const SleeperLayout = (props) => {
       <div className="isle">
         <div className="layout-row">
           {[...Array(5).keys()].map((row) => {
-            const id = `${props.deck}${row * 3 + 1}`;
+            const id = `${props.travelsName}-${props.deck}${row * 3 + 1}`;
             const value = row * 3 + 1;
             let className = "sleep-seat";
             if (occupiedSeatsArrDeck.includes(value)) {
