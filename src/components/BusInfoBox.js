@@ -202,7 +202,7 @@ const BusInfoBox = (props) => {
                       toggleArr[0] === 0
                         ? "red-toggle d-none"
                         : "red-toggle d-block"
-                    } 
+                    }
                   ></div>
                 </div>
                 <div className="col d-flex flex-column">

@@ -10,9 +10,13 @@ const SeatLayout = (props) => {
     console.log("seat clicked inside handle click: " + id);
     let value = element.textContent;
     if (element) {
-      console.log("seat clicked inside element: " + id);
-
-      if (!props.selectedSeatsHook.includes(value)) {
+      const computedStyle = window.getComputedStyle(element);
+      const backgroundColor = computedStyle.backgroundColor;
+      if (
+        !element.classList.contains("pink-background") &&
+        !element.classList.contains("grey-background") &&
+        !props.selectedSeatsHook.includes(value)
+      ) {
         props.setSelectedSeatsHook((prev) => {
           return [...prev, value];
         });
@@ -20,12 +24,10 @@ const SeatLayout = (props) => {
 
         element.style.backgroundColor = "black";
         element.style.color = "white";
-      } else {
+      } else if (props.selectedSeatsHook.includes(value)) {
         props.setSelectedSeatsHook((prev) => {
           return prev.filter((seat) => seat !== value);
         });
-        console.log("seat clicked inside else : " + id);
-
         element.style.backgroundColor = "white";
         element.style.color = "grey";
       }

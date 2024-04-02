@@ -2,19 +2,12 @@ import React from "react";
 import "./SleeperLayout.scss";
 
 const SleeperLayout = (props) => {
-  let newVar;
-  {
-    // completely independent logic
-  }
   const occupiedSeatsArr = props.occupiedSeatsArr;
   const femaleSeatsArr = props.femaleSeatsArr;
   let occupiedSeatsArrDeck = [],
     femaleSeatsArrDeck = [];
   const deck = props.deck;
-  let newVar2;
-  {
-    // completely independent logic
-  }
+
   if (deck == "L") {
     occupiedSeatsArr.map((item) => {
       if (item < 16) {
