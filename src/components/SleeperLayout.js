@@ -39,13 +39,17 @@ const SleeperLayout = (props) => {
     let value = element.textContent;
     value = props.deck + "-" + value;
     if (element) {
-      if (!props.selectedSeatsHook.includes(value)) {
+      if (
+        !element.classList.contains("pink-background") &&
+        !element.classList.contains("grey-background") &&
+        !props.selectedSeatsHook.includes(value)
+      ) {
         props.setSelectedSeatsHook((prev) => {
           return [...prev, value];
         });
         element.style.backgroundColor = "black";
         element.style.color = "white";
-      } else {
+      } else if (props.selectedSeatsHook.includes(value)) {
         props.setSelectedSeatsHook((prev) => {
           return prev.filter((seat) => seat !== value);
         });

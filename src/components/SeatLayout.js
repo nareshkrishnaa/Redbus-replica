@@ -10,8 +10,6 @@ const SeatLayout = (props) => {
     console.log("seat clicked inside handle click: " + id);
     let value = element.textContent;
     if (element) {
-      const computedStyle = window.getComputedStyle(element);
-      const backgroundColor = computedStyle.backgroundColor;
       if (
         !element.classList.contains("pink-background") &&
         !element.classList.contains("grey-background") &&
