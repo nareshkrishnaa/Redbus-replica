@@ -12,6 +12,15 @@ const BookingPage = () => {
   const cityData = location.state;
   let fcity = cityData.fromCity;
   let tcity = cityData.toCity;
+
+  const getBusStops = (n) => {
+    const city = cities.find((city) => city.cityName === n);
+    return city.busStops;
+  };
+
+  let fStopsArr = getBusStops(fcity);
+  let tStopsArr = getBusStops(tcity);
+
   const formatDate = (date) => {
     const options = { day: "2-digit", month: "short" };
     return new Intl.DateTimeFormat("en-US", options).format(date);
@@ -135,6 +144,12 @@ const BookingPage = () => {
                   seatAvailability={item.seatAvailability}
                   occupiedSeatsArr={item.occupiedSeatsArr}
                   femaleSeatsArr={item.femaleSeatsArr}
+                  fStopsArr={fStopsArr}
+                  tStopsArr={tStopsArr}
+                  boardingStopsState={boardingStopsState}
+                  arrivalStopsState={arrivalStopsState}
+                  setBoardingStopsState={setBoardingStopsState}
+                  setArrivalStopsState={setArrivalStopsState}
                 />
               );
             })}

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "./BusInfoBox.scss";
-import { Modal } from "react-bootstrap";
+import { Modal, Form } from "react-bootstrap";
 import SleeperLayout from "./SleeperLayout";
 import SeatLayout from "./SeatLayout";
+import StopList from "./StopList";
 
 const BusInfoBox = (props) => {
   const [buttonValue, setButtonValue] = useState("BOOK SEATS");
@@ -43,6 +44,7 @@ const BusInfoBox = (props) => {
       }
     }
   };
+
   return (
     <div className="busInfoBox mb-3">
       <Container fluid>
@@ -186,11 +188,14 @@ const BusInfoBox = (props) => {
                 </div>
               </div>
             </div>
-            <Container className="mt-3">
+            <Container className="mt-3 bg-light">
+              <p className="selectBpDpHeading">
+                Select the boarding and dropping point
+              </p>
               <Row>
-                <div className="col d-flex flex-column">
+                <div className="col  d-flex flex-column">
                   <h6
-                    className="bpoint-heading"
+                    className={`text-center bpoint-heading mb-1 ${toggleArr[0] === 0 ? "" : "text-primary"}`}
                     onClick={() => {
                       toggleOnClick(1);
                     }}
@@ -200,14 +205,14 @@ const BusInfoBox = (props) => {
                   <div
                     className={
                       toggleArr[0] === 0
-                        ? "red-toggle d-none"
-                        : "red-toggle d-block"
+                        ? "red-toggle d-none mt-0"
+                        : "red-toggle d-block mt-0"
                     }
                   ></div>
                 </div>
                 <div className="col d-flex flex-column">
                   <h6
-                    className="bpoint-heading"
+                    className={`text-center bpoint-heading mb-1 ${toggleArr[1] === 0 ? "" : "text-primary"}`}
                     onClick={() => {
                       toggleOnClick(2);
                     }}
@@ -217,11 +222,41 @@ const BusInfoBox = (props) => {
                   <div
                     className={
                       toggleArr[1] === 0
-                        ? "red-toggle d-none"
-                        : "red-toggle d-block"
+                        ? "red-toggle d-none mt-0"
+                        : "red-toggle d-block mt-0"
                     }
                   ></div>
                 </div>
+              </Row>
+              <Row
+                className={
+                  toggleArr[0] === 0
+                    ? "d-none stop-confirmation"
+                    : "d-block stop-confirmation"
+                }
+              >
+                <StopList
+                  eat={props.eat}
+                  ebt={props.ebt}
+                  fStopsArr={props.fStopsArr}
+                  tStopsArr={props.tStopsArr}
+                  type="boarding"
+                />
+              </Row>
+              <Row
+                className={
+                  toggleArr[1] === 0
+                    ? "d-none stop-confirmation"
+                    : "d-block stop-confirmation"
+                }
+              >
+                <StopList
+                  eat={props.eat}
+                  ebt={props.ebt}
+                  fStopsArr={props.fStopsArr}
+                  tStopsArr={props.tStopsArr}
+                  type="arrival"
+                />
               </Row>
             </Container>
             {/* <div className="position-absolute mt-auto bottom-0 end-0 m-3">
