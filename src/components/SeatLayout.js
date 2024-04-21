@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Badge } from "react-bootstrap";
 import "./SeatLayout.scss";
 
 const SeatLayout = (props) => {
   const occupiedSeatsArr = props.occupiedSeatsArr;
   const femaleSeatsArr = props.femaleSeatsArr;
+  const toggleHandler = props.toggleHandler;
+  const [toggleHandlerFlag, setToggleHandlerFlag] = useState(0);
   const handleClick = (id) => {
+    if (toggleHandlerFlag == 0) {
+      toggleHandler();
+      console.log("toggleHandler flag :" + toggleHandlerFlag);
+      setToggleHandlerFlag(1);
+    }
+
     const element = document.getElementById(id);
     console.log("seat clicked inside handle click: " + id);
     let value = element.textContent;

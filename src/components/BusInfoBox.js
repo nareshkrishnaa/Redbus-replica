@@ -29,6 +29,9 @@ const BusInfoBox = (props) => {
   };
 
   const [toggleArr, setToggleArr] = useState([0, 0]);
+  const toggleHandler = () => {
+    toggleOnClick(1);
+  };
   const toggleOnClick = (n) => {
     if (n === 1) {
       if (toggleArr[0] == 0) {
@@ -146,6 +149,7 @@ const BusInfoBox = (props) => {
                   selectedSeatsHook={selectedSeatsHook}
                   setSelectedSeatsHook={setSelectedSeatsHook}
                   travelsName={props.travelsName}
+                  toggleHandler={toggleHandler}
                 />
 
                 <div className="label">Upper Deck</div>
@@ -156,6 +160,7 @@ const BusInfoBox = (props) => {
                   selectedSeatsHook={selectedSeatsHook}
                   setSelectedSeatsHook={setSelectedSeatsHook}
                   travelsName={props.travelsName}
+                  toggleHandler={toggleHandler}
                 />
               </div>
             ) : (
@@ -167,6 +172,7 @@ const BusInfoBox = (props) => {
                   selectedSeatsHook={selectedSeatsHook}
                   setSelectedSeatsHook={setSelectedSeatsHook}
                   travelsName={props.travelsName}
+                  toggleHandler={toggleHandler}
                 />
               </div>
             )}
@@ -259,11 +265,6 @@ const BusInfoBox = (props) => {
                 />
               </Row>
             </Container>
-            {/* <div className="position-absolute mt-auto bottom-0 end-0 m-3">
-              <button className="btn btn-primary text-uppercase text-white">
-                Proceed to book
-              </button>
-            </div> */}
           </Col>
         </Row>
       </Container>

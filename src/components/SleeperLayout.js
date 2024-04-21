@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SleeperLayout.scss";
 
 const SleeperLayout = (props) => {
@@ -7,6 +7,8 @@ const SleeperLayout = (props) => {
   let occupiedSeatsArrDeck = [],
     femaleSeatsArrDeck = [];
   const deck = props.deck;
+  const toggleHandler = props.toggleHandler;
+  const [toggleHandlerFlag, setToggleHandlerFlag] = useState(0);
 
   if (deck == "L") {
     occupiedSeatsArr.map((item) => {
@@ -35,6 +37,11 @@ const SleeperLayout = (props) => {
   }
 
   const handleClick = (id) => {
+    if (toggleHandlerFlag == 0) {
+      toggleHandler();
+      console.log("toggleHandler flag :" + toggleHandlerFlag);
+      setToggleHandlerFlag(1);
+    }
     const element = document.getElementById(id);
     let value = element.textContent;
     value = props.deck + "-" + value;
