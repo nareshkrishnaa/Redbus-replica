@@ -18,7 +18,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Summa = () => {
-  return <></>;
+  return (
+    <>
+      <Row></Row>
+    </>
+  );
 };
 
 export default Summa;

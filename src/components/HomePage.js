@@ -19,6 +19,7 @@ import {
   faCalendarDays,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import Navbar1 from "./Navbar1";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -52,10 +53,48 @@ const HomePage = () => {
 
   return (
     <>
-      <section className="hero mt-9">
+      <section className="hero mt-0">
         <Container fluid>
           <Row>
             <Col id="hero-bg" className="col-12 h-100 vh">
+              <Container className="mt-5">
+                <Row className="p-4">
+                  <Col md={{ span: 8, offset: 2 }}>
+                    <h2 className="fw-bold text-white text-center">
+                      India's No. 1 Online Bus Ticket Booking Site
+                    </h2>
+                  </Col>
+
+                  <Col xs={{ span: 8, offset: 2 }} className="mt-5">
+                    <div className="inputbox-outer">
+                      <div className="inputbox-inner1">
+                        <div>
+                          <div className="inputbox-from">
+                            <div role="button" className="inputbox-from-button">
+                              <div className="inputbox-from-button-inner1">
+                                <i class="bi bi-bus-front-fill input-icon"></i>
+                                <div className="inputbox-from-inner2">
+                                  <div className="inputbox-from-inner3">
+                                    <label className="inputbox-from-label">
+                                      From
+                                    </label>
+                                    <div class="inputbox-placeholder">
+                                      <text class="placeHolderMainText">
+                                        Chennai
+                                      </text>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+
               <Container className="mt-5">
                 <Row className="p-4">
                   <Col md={{ span: 8, offset: 2 }}>

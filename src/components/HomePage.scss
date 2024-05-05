@@ -3,3 +3,85 @@
   background-size: cover;
   height: 32rem !important;
 }
+
+.inputbox-outer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  position: absolute;
+  top: 226px;
+}
+
+.inputbox-inner1 {
+  display: flex;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 5px 12px, rgba(0, 0, 0, 0.05) 0px 0px 0px;
+  border-radius: 32px;
+  cursor: pointer;
+  background: rgb(255, 255, 255);
+}
+
+.inputbox-from {
+  position: relative;
+}
+
+.inputbox-from-button {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.inputbox-from-button-inner1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 270px;
+  height: 112px;
+  gap: 13px;
+  border-radius: 32px 0px 0px 32px;
+  background-color: rgb(255, 255, 255);
+}
+
+.input-icon {
+  font-size: 24px;
+  color: rgba(22, 22, 22, 0.692);
+}
+
+.inputbox-from-inner2 {
+  display: flex;
+  align-items: center;
+  width: 166px;
+  height: inherit;
+  position: relative;
+}
+
+.inputbox-from-inner3 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 86px;
+}
+
+.inputbox-from-label {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  pointer-events: none;
+  display: flex;
+  color: rgb(126, 126, 140);
+}
+
+.inputbox-placeholder {
+  display: flex;
+  flex-direction: column;
+}
+
+.placeHolderMainText {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: rgb(29, 29, 29);
+  overflow: hidden;
+  max-height: 44px;
+}

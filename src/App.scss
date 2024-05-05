@@ -9,3 +9,13 @@
 #book-tickets:hover h5 {
   color: var(--bs-primary);
 }
+
+body {
+  color: #4a4a4a;
+  height: 100%;
+  overflow-y: scroll;
+  word-break: break-word;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 400;
+}

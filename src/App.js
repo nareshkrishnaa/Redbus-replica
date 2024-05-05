@@ -11,10 +11,11 @@ import BusInfoBox from "./components/BusInfoBox";
 import SeatSelector from "./components/SeatSelector";
 import SeatLayout from "./components/SeatLayout";
 import SleeperLayout from "./components/SleeperLayout";
+import Navbar1 from "./components/Navbar1";
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Navbar1 />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
