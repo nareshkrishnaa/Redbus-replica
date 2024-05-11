@@ -21,8 +21,8 @@ const Navbar1 = () => {
           title="redBus"
         />
         <span className="vertical_seperator"></span>
-        <ul class="rb_verticals">
-          <li class="rb_vertical active" id="rb_bus">
+        <ul className="rb_verticals">
+          <li className="rb_vertical active" id="rb_bus">
             <svg
               className="img_rb_vertical"
               xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ const Navbar1 = () => {
             <span className="name_rb_vertical">Bus tickets</span>
           </li>
 
-          <li class="rb_vertical" id="rb_rail">
+          <li className="rb_vertical" id="rb_rail">
             <svg
               className="img_rb_vertical"
               xmlns="http://www.w3.org/2000/svg"
@@ -79,9 +79,9 @@ const Navbar1 = () => {
             }}
           >
             <div className="rb_main_secondary_item  link">
-              <i class="bi bi-person-circle icon_rb_secondary_item "></i>
+              <i className="bi bi-person-circle icon_rb_secondary_item "></i>
               <span className="name_rb_secondary_item">Account</span>
-              <i class="bi bi-chevron-down icon_secondary_item_more"></i>
+              <i className="bi bi-chevron-down icon_secondary_item_more"></i>
             </div>
             <div className={"dropdown_wrap " + navDropDown}>
               <ul className="header_dropdown_menu">

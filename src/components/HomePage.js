@@ -25,6 +25,7 @@ const HomePage = () => {
   const navigate = useNavigate();
   const [fromCity, setFromCity] = useState("From");
   const [toCity, setToCity] = useState("To");
+  const [cityInput1, setCityInput1] = useState("");
   const setFrom = (event) => {
     if (toCity === event.target.value) {
       alert("From and To cities can't be same,Select a different From City");
@@ -51,6 +52,26 @@ const HomePage = () => {
     }
   };
 
+  const [fromText, setFromText] = useState("Chennai");
+  const citiesArr = cities.map((city) => city.cityName);
+
+  const [inputFromArr, setInputFormArr] = useState(citiesArr);
+  const alterInputFromArr = (str) => {
+    const lowerCaseStr = str.toLowerCase();
+    const alteredArray = citiesArr.filter((cityName) =>
+      cityName.toLowerCase().includes(lowerCaseStr),
+    );
+    setInputFormArr(alteredArray);
+  };
+
+  const handleFomListClick = (city) => {
+    setFromCity(city);
+    setFromText(city);
+  };
+  let inputBoxUlClass = "inputbox-ul";
+  let inputBoxUlClass2 = "inputbox-ul d-none";
+  const [fromListHide, setFromListHide] = useState(false);
+
   return (
     <>
       <section className="hero mt-0">
@@ -65,7 +86,7 @@ const HomePage = () => {
                     </h2>
                   </Col>
 
-                  <Col xs={{ span: 8, offset: 2 }} className="mt-5">
+                  <Col xs={{ span: 8, offset: 0 }} className="mt-8">
                     <div className="inputbox-outer">
                       <div className="inputbox-inner1">
                         <div>
@@ -74,13 +95,124 @@ const HomePage = () => {
                               <div className="inputbox-from-button-inner1">
                                 <i class="bi bi-bus-front-fill input-icon"></i>
                                 <div className="inputbox-from-inner2">
-                                  <div className="inputbox-from-inner3">
+                                  <div
+                                    className="inputbox-from-inner3"
+                                    onMouseEnter={() => {
+                                      console.log("Mouse Entered");
+                                      setFromListHide(true);
+                                    }}
+                                    onMouseLeave={() => {
+                                      console.log("Mouse left");
+                                      setFromListHide(false);
+                                    }}
+                                  >
                                     <label className="inputbox-from-label">
                                       From
                                     </label>
+
+                                    <div
+                                      className="inputbox-placeholder"
+                                      onClick={() => {
+                                        setFromText("");
+                                      }}
+                                    >
+                                      <div className="placeHolderMainText selectclass">
+                                        <input
+                                          className="inputbox-inputbox"
+                                          value={fromText}
+                                          onChange={(event) => {
+                                            let str = event.target.value;
+                                            console.log(str);
+                                            setFromText(str);
+                                            alterInputFromArr(str);
+                                          }}
+                                        />
+                                      </div>
+
+                                      <ul
+                                        className={"inputbox-ul"}
+                                        style={{
+                                          display: fromListHide
+                                            ? "block"
+                                            : "none",
+                                        }}
+                                      >
+                                        {inputFromArr.map((city) => (
+                                          <li
+                                            className="optionStyle"
+                                            onClick={() => {
+                                              handleFomListClick(city);
+                                              setFromListHide(false);
+                                            }}
+                                          >
+                                            {city}
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* --------------------- */}
+                        <div className="inputbox-seperator">
+                          <div class="inputbox-arrowswap">
+                            <i class="bi bi-arrow-left-right"></i>
+                          </div>
+                        </div>
+
+                        <div>
+                          <div className="inputbox-from">
+                            <div role="button" className="inputbox-from-button">
+                              <div className="inputbox-from-button-inner1">
+                                <i class="bi bi-bus-front-fill input-icon"></i>
+                                <div className="inputbox-from-inner2">
+                                  <div className="inputbox-from-inner3">
+                                    <label className="inputbox-from-label">
+                                      To
+                                    </label>
+                                    <div class="inputbox-placeholder">
+                                      <select
+                                        className="placeHolderMainText selectclass"
+                                        // value={}
+                                        // onChange={}
+                                      >
+                                        <option value="">Trichy</option>
+                                        {cities.map((city) => (
+                                          <option
+                                            className="optionStyle"
+                                            key={city.id}
+                                            value={city.name}
+                                          >
+                                            {city.cityName}
+                                          </option>
+                                        ))}
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {/* ------------------------------------- */}
+                        <div className="inputbox-seperator"></div>
+                        <div>
+                          <div className="inputbox-from">
+                            <div role="button" className="inputbox-from-button">
+                              <div className="inputbox-from-button-inner1">
+                                <i class="bi bi-calendar3 input-icon"></i>
+                                <div className="inputbox-from-inner2">
+                                  <div className="inputbox-from-inner3">
+                                    <label className="inputbox-from-label ">
+                                      Date
+                                    </label>
                                     <div class="inputbox-placeholder">
                                       <text class="placeHolderMainText">
-                                        Chennai
+                                        5 MAY 2024
                                       </text>
                                     </div>
                                   </div>
@@ -89,6 +221,8 @@ const HomePage = () => {
                             </div>
                           </div>
                         </div>
+
+                        <button className="searchbox">SEARCH BUSES</button>
                       </div>
                     </div>
                   </Col>
