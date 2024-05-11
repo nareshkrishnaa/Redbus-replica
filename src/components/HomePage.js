@@ -52,10 +52,13 @@ const HomePage = () => {
     }
   };
 
-  const [fromText, setFromText] = useState("Chennai");
+  const [fromText, setFromText] = useState("");
+  const [toText, setToText] = useState("");
   const citiesArr = cities.map((city) => city.cityName);
+  const [citiesToArr, setCitiesToArr] = useState(citiesArr);
 
   const [inputFromArr, setInputFormArr] = useState(citiesArr);
+  const [inputToArr, setInputToArr] = useState(citiesToArr);
   const alterInputFromArr = (str) => {
     const lowerCaseStr = str.toLowerCase();
     const alteredArray = citiesArr.filter((cityName) =>
@@ -63,14 +66,30 @@ const HomePage = () => {
     );
     setInputFormArr(alteredArray);
   };
+  const alterInputToArr = (str) => {
+    const lowerCaseStr = str.toLowerCase();
+    let alteredArray = citiesToArr.filter((cityName) =>
+      cityName.toLowerCase().includes(lowerCaseStr),
+    );
+    setInputToArr(alteredArray);
+  };
 
   const handleFomListClick = (city) => {
     setFromCity(city);
     setFromText(city);
+    const alteredToArrList = citiesArr.filter((item) => item != city);
+    console.log("----------------", alteredToArrList);
+    setCitiesToArr(["dummy"]);
+    console.log("+++++++++++++", citiesToArr);
+  };
+  const handleToListClick = (city) => {
+    setToCity(city);
+    setToText(city);
   };
   let inputBoxUlClass = "inputbox-ul";
   let inputBoxUlClass2 = "inputbox-ul d-none";
   const [fromListHide, setFromListHide] = useState(false);
+  const [toListHide, setToListHide] = useState(false);
 
   return (
     <>
@@ -114,6 +133,7 @@ const HomePage = () => {
                                       <div className="placeHolderMainText selectclass">
                                         <input
                                           className="inputbox-inputbox"
+                                          placeholder="Select From City"
                                           value={fromText}
                                           onClick={() => {
                                             setFromText("");
@@ -168,27 +188,59 @@ const HomePage = () => {
                               <div className="inputbox-from-button-inner1">
                                 <i class="bi bi-bus-front-fill input-icon"></i>
                                 <div className="inputbox-from-inner2">
-                                  <div className="inputbox-from-inner3">
+                                  <div
+                                    className="inputbox-from-inner3"
+                                    onMouseEnter={() => {
+                                      console.log("Mouse Entered");
+                                      setToListHide(true);
+                                    }}
+                                    onMouseLeave={() => {
+                                      console.log("Mouse left");
+                                      setToListHide(false);
+                                    }}
+                                  >
                                     <label className="inputbox-from-label">
                                       To
                                     </label>
-                                    <div class="inputbox-placeholder">
-                                      <select
-                                        className="placeHolderMainText selectclass"
-                                        // value={}
-                                        // onChange={}
+
+                                    <div className="inputbox-placeholder">
+                                      <div className="placeHolderMainText selectclass">
+                                        <input
+                                          className="inputbox-inputbox"
+                                          placeholder="Select To City"
+                                          value={toText}
+                                          onClick={() => {
+                                            setToText("");
+                                          }}
+                                          onChange={(event) => {
+                                            let str = event.target.value;
+                                            console.log(str);
+                                            setToText(str);
+                                            alterInputToArr(str);
+                                          }}
+                                        />
+                                      </div>
+
+                                      <ul
+                                        className={"inputbox-ul"}
+                                        style={{
+                                          display: toListHide
+                                            ? "block"
+                                            : "none",
+                                        }}
                                       >
-                                        <option value="">Trichy</option>
-                                        {cities.map((city) => (
-                                          <option
+                                        {inputToArr.map((city) => (
+                                          <li
                                             className="optionStyle"
-                                            key={city.id}
-                                            value={city.name}
+                                            onClick={() => {
+                                              handleToListClick(city);
+                                              setToListHide(false);
+                                            }}
                                           >
-                                            {city.cityName}
-                                          </option>
+                                            {city}
+                                          </li>
                                         ))}
-                                      </select>
+                                      </ul>
                                     </div>
                                   </div>
                                 </div>
