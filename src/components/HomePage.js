@@ -110,16 +110,14 @@ const HomePage = () => {
                                       From
                                     </label>
 
-                                    <div
-                                      className="inputbox-placeholder"
-                                      onClick={() => {
-                                        setFromText("");
-                                      }}
-                                    >
+                                    <div className="inputbox-placeholder">
                                       <div className="placeHolderMainText selectclass">
                                         <input
                                           className="inputbox-inputbox"
                                           value={fromText}
+                                          onClick={() => {
+                                            setFromText("");
+                                          }}
                                           onChange={(event) => {
                                             let str = event.target.value;
                                             console.log(str);
