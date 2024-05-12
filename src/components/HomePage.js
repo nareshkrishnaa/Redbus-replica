@@ -19,13 +19,11 @@ import {
   faCalendarDays,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import Navbar1 from "./Navbar1";
 
 const HomePage = () => {
   const navigate = useNavigate();
   const [fromCity, setFromCity] = useState("From");
   const [toCity, setToCity] = useState("To");
-  const [cityInput1, setCityInput1] = useState("");
   const setFrom = (event) => {
     if (toCity === event.target.value) {
       alert("From and To cities can't be same,Select a different From City");
@@ -55,39 +53,40 @@ const HomePage = () => {
   const [fromText, setFromText] = useState("");
   const [toText, setToText] = useState("");
   const citiesArr = cities.map((city) => city.cityName);
-  const [citiesToArr, setCitiesToArr] = useState(citiesArr);
 
-  const [inputFromArr, setInputFormArr] = useState(citiesArr);
-  const [inputToArr, setInputToArr] = useState(citiesToArr);
+  const [inputFromArr, setInputFromArr] = useState(citiesArr);
+  const [inputToArr, setInputToArr] = useState(citiesArr);
   const alterInputFromArr = (str) => {
     const lowerCaseStr = str.toLowerCase();
-    const alteredArray = citiesArr.filter((cityName) =>
+    let alteredArray = citiesArr.filter((cityName) =>
       cityName.toLowerCase().includes(lowerCaseStr),
     );
-    setInputFormArr(alteredArray);
+    alteredArray = alteredArray.filter((city) => city != toText);
+    setInputFromArr(alteredArray);
   };
   const alterInputToArr = (str) => {
     const lowerCaseStr = str.toLowerCase();
-    let alteredArray = citiesToArr.filter((cityName) =>
+    let alteredArray = citiesArr.filter((cityName) =>
       cityName.toLowerCase().includes(lowerCaseStr),
     );
+    alteredArray = alteredArray.filter((city) => city != fromText);
     setInputToArr(alteredArray);
   };
 
-  const handleFomListClick = (city) => {
+  const handleFromListClick = (city) => {
     setFromCity(city);
     setFromText(city);
     const alteredToArrList = citiesArr.filter((item) => item != city);
-    console.log("----------------", alteredToArrList);
-    setCitiesToArr(["dummy"]);
-    console.log("+++++++++++++", citiesToArr);
+
+    setInputToArr(alteredToArrList);
   };
   const handleToListClick = (city) => {
     setToCity(city);
     setToText(city);
+    const alteredToArrList = citiesArr.filter((item) => item != city);
+    setInputFromArr(alteredToArrList);
   };
-  let inputBoxUlClass = "inputbox-ul";
-  let inputBoxUlClass2 = "inputbox-ul d-none";
+
   const [fromListHide, setFromListHide] = useState(false);
   const [toListHide, setToListHide] = useState(false);
 
@@ -159,7 +158,7 @@ const HomePage = () => {
                                           <li
                                             className="optionStyle"
                                             onClick={() => {
-                                              handleFomListClick(city);
+                                              handleFromListClick(city);
                                               setFromListHide(false);
                                             }}
                                           >
@@ -272,14 +271,16 @@ const HomePage = () => {
                           </div>
                         </div>
 
-                        <button className="searchbox">SEARCH BUSES</button>
+                        <button className="searchbox" onClick={searchButton}>
+                          SEARCH BUSES
+                        </button>
                       </div>
                     </div>
                   </Col>
                 </Row>
               </Container>
 
-              <Container className="mt-5">
+              {/* <Container className="mt-5">
                 <Row className="p-4">
                   <Col md={{ span: 8, offset: 2 }}>
                     <h2 className="fw-bold text-white text-center">
@@ -355,7 +356,7 @@ const HomePage = () => {
                     </div>
                   </Col>
                 </Row>
-              </Container>
+              </Container> */}
             </Col>
           </Row>
         </Container>
