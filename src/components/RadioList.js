@@ -8,7 +8,7 @@ const RadioList = ({ stopsArr, arrOfTime }) => {
   stopsArr.map((stops, index) => {
     arrayOfObjects.push({ stop: stops, time: arrOfTime[index] });
   });
-  console.log("((((((((", arrayOfObjects);
+  // console.log("((((((((", arrayOfObjects);
   return (
     <div>
       <Form>

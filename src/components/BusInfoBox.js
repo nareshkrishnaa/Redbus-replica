@@ -9,6 +9,11 @@ import StopList from "./StopList";
 const BusInfoBox = (props) => {
   const [buttonValue, setButtonValue] = useState("BOOK SEATS");
   const [selectedSeatsHook, setSelectedSeatsHook] = useState([]);
+  const [price, setPrice] = useState(0);
+  const ticketPrice = props.ticketPrice;
+  const updatePrice = () => {
+    setPrice(ticketPrice * selectedSeatsHook.length);
+  };
   const handleClick = (id) => {
     console.log(id);
     const row = document.getElementById(id);
@@ -84,7 +89,7 @@ const BusInfoBox = (props) => {
                       variant="primary text-white"
                       className="d-flex gap-2 px-2 py-1"
                     >
-                      <i class="bi bi-star"></i>
+                      <i className="bi bi-star"></i>
                       <div>{props.rating} / 5</div>
                     </Button>
                     <div>
@@ -150,6 +155,10 @@ const BusInfoBox = (props) => {
                   setSelectedSeatsHook={setSelectedSeatsHook}
                   travelsName={props.travelsName}
                   toggleHandler={toggleHandler}
+                  ticketPrice={ticketPrice}
+                  // updatePrice={updatePrice}
+                  price={price}
+                  setPrice={setPrice}
                 />
 
                 <div className="label">Upper Deck</div>
@@ -161,6 +170,10 @@ const BusInfoBox = (props) => {
                   setSelectedSeatsHook={setSelectedSeatsHook}
                   travelsName={props.travelsName}
                   toggleHandler={toggleHandler}
+                  ticketPrice={ticketPrice}
+                  // updatePrice={updatePrice}
+                  price={price}
+                  setPrice={setPrice}
                 />
               </div>
             ) : (
@@ -173,24 +186,28 @@ const BusInfoBox = (props) => {
                   setSelectedSeatsHook={setSelectedSeatsHook}
                   travelsName={props.travelsName}
                   toggleHandler={toggleHandler}
+                  ticketPrice={ticketPrice}
+                  // updatePrice={updatePrice}
+                  price={price}
+                  setPrice={setPrice}
                 />
               </div>
             )}
           </Col>
           <Col className="seat-selector pt-4 position-relative">
-            <div class="legend-wrap">
-              <div class="legend-left clearfix d-flex gap-2">
-                <div class="seat-legend-wrap sleeper-legend d-flex flex-column">
-                  <div class="available-sleep"></div>
-                  <div class="legend-label">available</div>
+            <div className="legend-wrap">
+              <div className="legend-left clearfix d-flex gap-2">
+                <div className="seat-legend-wrap sleeper-legend d-flex flex-column">
+                  <div className="available-sleep"></div>
+                  <div className="legend-label">available</div>
                 </div>
-                <div class="seat-legend-wrap sleeper-legend d-flex flex-column">
-                  <div class="unavailable-sleep"></div>
-                  <div class="legend-label">unavailable</div>
+                <div className="seat-legend-wrap sleeper-legend d-flex flex-column">
+                  <div className="unavailable-sleep"></div>
+                  <div className="legend-label">unavailable</div>
                 </div>
-                <div class="seat-legend-wrap sleeper-legend ladies-legend d-flex flex-column">
-                  <div class="ladies-sleep"></div>
-                  <div class="legend-label">female</div>
+                <div className="seat-legend-wrap sleeper-legend ladies-legend d-flex flex-column">
+                  <div className="ladies-sleep"></div>
+                  <div className="legend-label">female</div>
                 </div>
               </div>
             </div>
@@ -264,6 +281,28 @@ const BusInfoBox = (props) => {
                   type="arrival"
                 />
               </Row>
+
+              {/* Proceed to Buy tickets Button Segment */}
+
+              <div
+                className={selectedSeatsHook.length > 0 ? "d-block" : "d-none"}
+              >
+                <hr className="hr-bpDpSummary"></hr>
+                <div className="margin-t-b-10">
+                  <span className="fares-lb">Amount</span>
+                  <span className="fareDisclaimer margin-l-5">
+                    ( Taxes will be calculated during payment )
+                  </span>
+                  <span className="fr fare-summary-value">
+                    {" "}
+                    <span className="fare-summary-currency">INR</span>
+                    <span>{price}</span>
+                  </span>
+                  <button className="text-white continue-to-payment">
+                    continue
+                  </button>
+                </div>
+              </div>
             </Container>
           </Col>
         </Row>

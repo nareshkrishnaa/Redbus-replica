@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SleeperLayout.scss";
 
 const SleeperLayout = (props) => {
@@ -9,6 +9,12 @@ const SleeperLayout = (props) => {
   const deck = props.deck;
   const toggleHandler = props.toggleHandler;
   const [toggleHandlerFlag, setToggleHandlerFlag] = useState(0);
+  const ticketPrice = props.ticketPrice;
+  const selectedSeatsHook = props.selectedSeatsHook;
+
+  useEffect(() => {
+    props.setPrice(ticketPrice * selectedSeatsHook.length);
+  }, [selectedSeatsHook]);
 
   if (deck == "L") {
     occupiedSeatsArr.map((item) => {
@@ -54,17 +60,22 @@ const SleeperLayout = (props) => {
         props.setSelectedSeatsHook((prev) => {
           return [...prev, value];
         });
+        // props.updatePrice();
+
         element.style.backgroundColor = "black";
         element.style.color = "white";
       } else if (props.selectedSeatsHook.includes(value)) {
         props.setSelectedSeatsHook((prev) => {
           return prev.filter((seat) => seat !== value);
         });
+        // props.updatePrice();
+
         element.style.backgroundColor = "white";
         element.style.color = "grey";
       }
     }
   };
+
   return (
     <div className="layout-container mb-2">
       <div className="layout-row">

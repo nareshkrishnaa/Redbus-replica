@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Badge } from "react-bootstrap";
 import "./SeatLayout.scss";
 
@@ -7,15 +7,21 @@ const SeatLayout = (props) => {
   const femaleSeatsArr = props.femaleSeatsArr;
   const toggleHandler = props.toggleHandler;
   const [toggleHandlerFlag, setToggleHandlerFlag] = useState(0);
+  const ticketPrice = props.ticketPrice;
+  const selectedSeatsHook = props.selectedSeatsHook;
+  const updatePrice = props.updatePrice;
+  useEffect(() => {
+    props.setPrice(ticketPrice * selectedSeatsHook.length);
+  }, [selectedSeatsHook]);
   const handleClick = (id) => {
     if (toggleHandlerFlag == 0) {
       toggleHandler();
-      console.log("toggleHandler flag :" + toggleHandlerFlag);
+
       setToggleHandlerFlag(1);
     }
 
     const element = document.getElementById(id);
-    console.log("seat clicked inside handle click: " + id);
+
     let value = element.textContent;
     if (element) {
       if (
@@ -24,16 +30,22 @@ const SeatLayout = (props) => {
         !props.selectedSeatsHook.includes(value)
       ) {
         props.setSelectedSeatsHook((prev) => {
+          console.log("seat added ++++");
           return [...prev, value];
         });
-        console.log("seat clicked inside if : " + id);
+
+        // props.updatePrice();
 
         element.style.backgroundColor = "black";
         element.style.color = "white";
       } else if (props.selectedSeatsHook.includes(value)) {
         props.setSelectedSeatsHook((prev) => {
+          console.log("seat deleted ----");
           return prev.filter((seat) => seat !== value);
         });
+
+        // props.updatePrice();
+
         element.style.backgroundColor = "white";
         element.style.color = "grey";
       }
@@ -41,6 +53,9 @@ const SeatLayout = (props) => {
   };
   return (
     <div className="layout-container mb-4">
+      <div className="d-none">{props.price}</div>
+      {/* Added above div to over come the asynchronous nature of state updates in React.*/}
+
       <div className="layout-row">
         {[...Array(10).keys()].map((row) => {
           const id = props.travelsName + "-" + (row + 1) * 5;
@@ -58,7 +73,7 @@ const SeatLayout = (props) => {
               id={id}
               className={className}
               onClick={() => {
-                console.log("seat clicked : " + id);
+                // console.log("seat clicked : " + id);
                 handleClick(id);
               }}
             >

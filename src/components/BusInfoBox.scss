@@ -82,3 +82,61 @@
   line-height: 1.25;
   letter-spacing: .3px;
 }
+
+.hr-bpDpSummary {
+  border: 0;
+  border-top: 2px solid #827f7f;
+}
+
+.continue-to-payment {
+  width: 100%;
+  display: inline-block;
+  padding: 6px 16px 7px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 400;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  transition: .1s;
+  border: none;
+  text-align: center;
+  background-color: #d84e55;
+  color: #fff;
+}
+
+.margin-t-b-10 {
+  margin-top: .625rem;
+  margin-bottom: .625rem;
+}
+
+.fares-lb {
+  font-size: 14px;
+  color: #3e3e52;
+}
+
+.margin-l-5 {
+  margin-left: 5px;
+}
+
+.fareDisclaimer {
+  text-align: left;
+  font-size: 10px;
+  color: #838083;
+  margin-top: 5px;
+}
+
+.fr {
+  float: right;
+}
+
+.fare-summary-value {
+  font-weight: 700;
+  font-size: .875rem;
+  text-align: right;
+  color: #3e3e52;
+}
+
+.fare-summary-currency {
+  margin-right: 5px;
+}
