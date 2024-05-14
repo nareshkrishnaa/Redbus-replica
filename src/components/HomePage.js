@@ -89,7 +89,11 @@ const HomePage = () => {
 
   const [fromListHide, setFromListHide] = useState(false);
   const [toListHide, setToListHide] = useState(false);
-
+  const reverseCities = () => {
+    const temp = fromText;
+    setFromText(toText);
+    setToText(temp);
+  };
   return (
     <>
       <section className="hero mt-0">
@@ -176,8 +180,13 @@ const HomePage = () => {
 
                         {/* --------------------- */}
                         <div className="inputbox-seperator">
-                          <div class="inputbox-arrowswap">
-                            <i class="bi bi-arrow-left-right"></i>
+                          <div
+                            className="inputbox-arrowswap"
+                            onClick={() => {
+                              reverseCities();
+                            }}
+                          >
+                            <i className="bi bi-arrow-left-right"></i>
                           </div>
                         </div>
 
