@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "./BusInfoBox.scss";
 import { Modal, Form } from "react-bootstrap";
+import ToggleContext from "./ToggleContext";
 import SleeperLayout from "./SleeperLayout";
 import SeatLayout from "./SeatLayout";
 import StopList from "./StopList";
@@ -258,13 +259,15 @@ const BusInfoBox = (props) => {
                     : "d-block stop-confirmation"
                 }
               >
-                <StopList
-                  eat={props.eat}
-                  ebt={props.ebt}
-                  fStopsArr={props.fStopsArr}
-                  tStopsArr={props.tStopsArr}
-                  type="boarding"
-                />
+                <ToggleContext.Provider value={toggleOnClick}>
+                  <StopList
+                    eat={props.eat}
+                    ebt={props.ebt}
+                    fStopsArr={props.fStopsArr}
+                    tStopsArr={props.tStopsArr}
+                    type="boarding"
+                  />
+                </ToggleContext.Provider>
               </Row>
               <Row
                 className={
@@ -273,13 +276,15 @@ const BusInfoBox = (props) => {
                     : "d-block stop-confirmation"
                 }
               >
-                <StopList
-                  eat={props.eat}
-                  ebt={props.ebt}
-                  fStopsArr={props.fStopsArr}
-                  tStopsArr={props.tStopsArr}
-                  type="arrival"
-                />
+                <ToggleContext.Provider value={toggleOnClick}>
+                  <StopList
+                    eat={props.eat}
+                    ebt={props.ebt}
+                    fStopsArr={props.fStopsArr}
+                    tStopsArr={props.tStopsArr}
+                    type="arrival"
+                  />
+                </ToggleContext.Provider>
               </Row>
 
               {/* Proceed to Buy tickets Button Segment */}

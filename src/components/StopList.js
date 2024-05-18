@@ -56,7 +56,7 @@ const StopList = ({ eat, ebt, fStopsArr, tStopsArr, type }) => {
     });
     arrOfTime.reverse();
   }
-  return <RadioList stopsArr={stopsArr} arrOfTime={arrOfTime} />;
+  return <RadioList stopsArr={stopsArr} arrOfTime={arrOfTime} type={type} />;
 };
 
 export default StopList;
