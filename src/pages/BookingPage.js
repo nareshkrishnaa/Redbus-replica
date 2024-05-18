@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { travels, busType, cities } from "../data/Database";
 import { Col, Container, Row } from "react-bootstrap";
 import BusInfoBox from "../components/BusInfoBox";
@@ -67,22 +67,6 @@ const BookingPage = () => {
     busDetail.bstop = getFstop(fcity);
     busDetail.astop = getTstop(tcity);
   });
-  // console.log("-------Booking Page----", busDetails);
-
-  // let busDetails = arrayOfBusDetails(travelsNameArray);
-  // const arrayOfBusDetails = (travelsArray) => {
-  //   return travelsArray.map((travel) => ({
-  //     travelsName: travel.travelsName,
-  //     busType: getBusType(),
-  //     acType: getACType(),
-  //     rating: generateRating(),
-  //     noOfreviews: generateNoOfReviews(),
-  //     ticketPrice: getTicketPrice(),
-  //     seatAvailability: getSeatAvailability(),
-  //     bstop: getFstop(fcity),
-  //     astop: getTstop(tcity),
-  //   }));
-  // };
 
   let boardingStopsArray = busDetails.map((item) => {
     return item.bstop;
@@ -94,14 +78,48 @@ const BookingPage = () => {
     useState(boardingStopsArray);
   const [arrivalStopsState, setArrivalStopsState] = useState(arrivalStopsArray);
 
+  // document.addEventListener("DOMContentLoaded", userScroll);
+  // function userScroll() {
+  //   const cityDateBar = document.getElementById("cityDateBar");
+
+  //   window.addEventListener("scroll", () => {
+  //     if (window.scrollY > 10) {
+  //       cityDateBar.classList.add("bg-dark");
+  //     } else {
+  //       cityDateBar.classList.remove("bg-dark");
+  //     }
+  //   });
+  // }
+
+  useEffect(() => {
+    const cityDateBar = document.getElementById("cityDateBar");
+
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        cityDateBar.classList.add("bg-light");
+        cityDateBar.classList.add("fixed-top");
+      } else {
+        cityDateBar.classList.remove("bg-light");
+        cityDateBar.classList.remove("fixed-top");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div>
       <Container fluid>
-        <Row className="border-top border-bottom ps-6 py-4">
+        <Row id="cityDateBar" className="border-top border-bottom ps-6 py-2">
           <div className="d-flex gap-3">
             <div className="cityHeadingstyle">{fcity}</div>
             <div>
-              <i class="bi bi-arrow-right"></i>
+              <i className="bi bi-arrow-right"></i>
             </div>
             <div className="cityHeadingstyle">{tcity}</div>
             <div>
