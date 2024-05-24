@@ -42,17 +42,21 @@ const BusInfoBox = (props) => {
     if (n === 1) {
       if (toggleArr[0] == 0) {
         setToggleArr([1, 0]);
-      } else {
-        setToggleArr([0, 0]);
       }
+      // else {
+      //   setToggleArr([0, 0]);
+      // }
     } else {
       if (toggleArr[1] == 0) {
         setToggleArr([0, 1]);
-      } else {
-        setToggleArr([0, 0]);
       }
+      // else {
+      //   setToggleArr([0, 0]);
+      // }
     }
   };
+
+  const [bpdp, setBpdp] = useState("");
 
   return (
     <div className="busInfoBox mb-3">
@@ -213,99 +217,215 @@ const BusInfoBox = (props) => {
               </div>
             </div>
             <Container className="mt-3 bg-light">
-              <p className="selectBpDpHeading">
-                Select the boarding and dropping point
-              </p>
-              <Row>
-                <div className="col  d-flex flex-column">
-                  <h6
-                    className={`text-center bpoint-heading mb-1 ${toggleArr[0] === 0 ? "" : "text-primary"}`}
-                    onClick={() => {
-                      toggleOnClick(1);
-                    }}
-                  >
-                    BOARDING POINT
-                  </h6>
-                  <div
-                    className={
-                      toggleArr[0] === 0
-                        ? "red-toggle d-none mt-0"
-                        : "red-toggle d-block mt-0"
-                    }
-                  ></div>
-                </div>
-                <div className="col d-flex flex-column">
-                  <h6
-                    className={`text-center bpoint-heading mb-1 ${toggleArr[1] === 0 ? "" : "text-primary"}`}
-                    onClick={() => {
-                      toggleOnClick(2);
-                    }}
-                  >
-                    DROPPING POINT
-                  </h6>
-                  <div
-                    className={
-                      toggleArr[1] === 0
-                        ? "red-toggle d-none mt-0"
-                        : "red-toggle d-block mt-0"
-                    }
-                  ></div>
-                </div>
-              </Row>
-              <Row
-                className={
-                  toggleArr[0] === 0
-                    ? "d-none stop-confirmation"
-                    : "d-block stop-confirmation"
-                }
-              >
-                <ToggleContext.Provider value={toggleOnClick}>
-                  <StopList
-                    eat={props.eat}
-                    ebt={props.ebt}
-                    fStopsArr={props.fStopsArr}
-                    tStopsArr={props.tStopsArr}
-                    type="boarding"
-                  />
-                </ToggleContext.Provider>
-              </Row>
-              <Row
-                className={
-                  toggleArr[1] === 0
-                    ? "d-none stop-confirmation"
-                    : "d-block stop-confirmation"
-                }
-              >
-                <ToggleContext.Provider value={toggleOnClick}>
-                  <StopList
-                    eat={props.eat}
-                    ebt={props.ebt}
-                    fStopsArr={props.fStopsArr}
-                    tStopsArr={props.tStopsArr}
-                    type="arrival"
-                  />
-                </ToggleContext.Provider>
-              </Row>
+              <div id="boardingAndDroppingPointSelector" className={bpdp}>
+                <p className="selectBpDpHeading">
+                  Select the boarding and dropping point
+                </p>
+                <Row className="">
+                  <div className="col  d-flex flex-column">
+                    <h6
+                      className={`text-center bpoint-heading mb-1 ${toggleArr[0] === 0 ? "" : "text-primary"}`}
+                      onClick={() => {
+                        toggleOnClick(1);
+                      }}
+                    >
+                      BOARDING POINT
+                    </h6>
+                    <div
+                      className={
+                        toggleArr[0] === 0
+                          ? "red-toggle d-none mt-0"
+                          : "red-toggle d-block mt-0"
+                      }
+                    ></div>
+                  </div>
+                  <div className="col d-flex flex-column">
+                    <h6
+                      className={`text-center bpoint-heading mb-1 ${toggleArr[1] === 0 ? "" : "text-primary"}`}
+                      onClick={() => {
+                        toggleOnClick(2);
+                      }}
+                    >
+                      DROPPING POINT
+                    </h6>
+                    <div
+                      className={
+                        toggleArr[1] === 0
+                          ? "red-toggle d-none mt-0"
+                          : "red-toggle d-block mt-0"
+                      }
+                    ></div>
+                  </div>
+                </Row>
+                <Row
+                  className={
+                    toggleArr[0] === 0
+                      ? "d-none stop-confirmation"
+                      : "d-block stop-confirmation"
+                  }
+                >
+                  <ToggleContext.Provider value={toggleOnClick}>
+                    <StopList
+                      eat={props.eat}
+                      ebt={props.ebt}
+                      fStopsArr={props.fStopsArr}
+                      tStopsArr={props.tStopsArr}
+                      type="boarding"
+                    />
+                  </ToggleContext.Provider>
+                </Row>
+                <Row
+                  className={
+                    toggleArr[1] === 0
+                      ? "d-none stop-confirmation"
+                      : "d-block stop-confirmation"
+                  }
+                >
+                  <ToggleContext.Provider value={toggleOnClick}>
+                    <StopList
+                      eat={props.eat}
+                      ebt={props.ebt}
+                      fStopsArr={props.fStopsArr}
+                      tStopsArr={props.tStopsArr}
+                      type="arrival"
+                    />
+                  </ToggleContext.Provider>
+                </Row>
 
-              {/* Proceed to Buy tickets Button Segment */}
+                {/* Proceed to Buy tickets Button Segment */}
 
-              <div
-                className={selectedSeatsHook.length > 0 ? "d-block" : "d-none"}
-              >
-                <hr className="hr-bpDpSummary"></hr>
-                <div className="margin-t-b-10">
-                  <span className="fares-lb">Amount</span>
-                  <span className="fareDisclaimer margin-l-5">
-                    ( Taxes will be calculated during payment )
-                  </span>
-                  <span className="fr fare-summary-value">
-                    {" "}
-                    <span className="fare-summary-currency">INR</span>
-                    <span>{price}</span>
-                  </span>
-                  <button className="text-white continue-to-payment">
-                    continue
-                  </button>
+                <div
+                  className={
+                    selectedSeatsHook.length > 0 ? "d-block" : "d-none"
+                  }
+                >
+                  <hr className="hr-bpDpSummary"></hr>
+                  <div className="margin-t-b-10">
+                    <span className="fares-lb">Amount</span>
+                    <span className="fareDisclaimer margin-l-5">
+                      ( Taxes will be calculated during payment )
+                    </span>
+                    <span className="fr fare-summary-value">
+                      {" "}
+                      <span className="fare-summary-currency">INR</span>
+                      <span>{price}</span>
+                    </span>
+                    <button
+                      onClick={() => {
+                        setBpdp("d-none");
+                      }}
+                      className="text-white continue-to-payment"
+                    >
+                      continue
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="search-seatlayout show_top animated seatBpDp">
+                <div class="curtain"></div>
+                <div class="seatlayout-meta-container clearfix">
+                  <div class="seatlayout-main-body">
+                    <div class="bp-dp-container">
+                      <div class="bpDpAddr ">
+                        <span class="bpdp-lb ">Boarding &amp; Dropping</span>
+                        <span
+                          class="fr bpdp-change"
+                          onClick={() => {
+                            setBpdp("");
+                            toggleHandler();
+                          }}
+                        >
+                          change
+                        </span>
+                        <div class="bpDpAddr">
+                          <div class="pR oh">
+                            <div class="BpDp-dashed"></div>
+                            <div class="colBullet-css">
+                              <div class="circleBp"></div>
+                            </div>
+                            <div class="colBpDp-css">
+                              <span class="bpDpName-Lbl">
+                                Koyembedu (Pickup Van/Bus)
+                              </span>
+                              <span class="bpDpSummaryTm-Lbl">
+                                23:00 <span class="color-red-next-day"></span>
+                              </span>
+                              <div class="selectedBpDpAdd-Lbl">
+                                6/9, Sri Kumaran Travels, Kaliamman Koil Street,
+                                Near 100 Feet Road Signal, Opp to Crown Guest
+                                House, Near Hotel Arafa,
+                              </div>
+                            </div>
+                          </div>
+                          <div class="margin-top-n-8">
+                            <div class="colBullet-css">
+                              <div class="circleDp"></div>
+                            </div>
+                            <div class="colBpDp-css pR">
+                              <span class="bpDpName-Lbl">
+                                Samayapuram Toll Gate
+                              </span>
+                              <span class="bpDpSummaryTm-Lbl">
+                                05:35{" "}
+                                <span class="color-red-next-day">(25 May)</span>
+                              </span>
+                              <div class="selectedBpDpAdd-Lbl">
+                                Samayapuram Toll Gate
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <hr class="hr-bpDpSummary" />
+                          <div class="seatlayout-meta clearfix m-t-15 m-b-15">
+                            <div>
+                              <div class="seats-selected-container">
+                                <span class="seat-lb">Seat No.</span>
+                                <span class="selected-seats">
+                                  <span>18</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <hr class="hr-bpDpSummary" />
+                          <div class="fareDetails-Lbl">Fare Details</div>
+                          <div class="seatlayout-fare-break-container">
+                            <div class="fare-container animated fadeInUp">
+                              <ul class="fares-container">
+                                <li class="fare-row clearfix">
+                                  <span class="fare-type">Basic Fare</span>
+                                  <span class="fare-value">
+                                    <span class="fare-currency">INR</span>1199
+                                  </span>
+                                </li>
+                              </ul>
+                              <div class="child-fare-text hide"></div>
+                            </div>
+                          </div>
+                          <div class="fare-summary-container">
+                            <span class="fares-lb">Amount</span>
+                            <span class="fr fare-summary-value">
+                              {" "}
+                              <span class="fare-summary-currency">INR</span>
+                              <span>1199.00</span>
+                            </span>
+                            <div class="fareDisclaimer">
+                              Taxes will be calculated during payment
+                            </div>
+                          </div>
+                          <h3 class="fare-toggle-btn fr m-t-0">
+                            Hide Fare Details
+                          </h3>
+                          <div class="fr showlayout-button-container w-15"></div>
+                          <div class="continue-container w-100 fl m-b-10">
+                            <button class="button continue inactive">
+                              Proceed to book
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Container>

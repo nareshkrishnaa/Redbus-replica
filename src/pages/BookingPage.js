@@ -78,19 +78,6 @@ const BookingPage = () => {
     useState(boardingStopsArray);
   const [arrivalStopsState, setArrivalStopsState] = useState(arrivalStopsArray);
 
-  // document.addEventListener("DOMContentLoaded", userScroll);
-  // function userScroll() {
-  //   const cityDateBar = document.getElementById("cityDateBar");
-
-  //   window.addEventListener("scroll", () => {
-  //     if (window.scrollY > 10) {
-  //       cityDateBar.classList.add("bg-dark");
-  //     } else {
-  //       cityDateBar.classList.remove("bg-dark");
-  //     }
-  //   });
-  // }
-
   useEffect(() => {
     const cityDateBar = document.getElementById("cityDateBar");
 
@@ -142,7 +129,7 @@ const BookingPage = () => {
               setArrivalStopsState={setArrivalStopsState}
             />
           </Col>
-          <Col lg={9}>
+          <Col lg={10}>
             {busDetails.map((item, index) => {
               return (
                 <BusInfoBox
