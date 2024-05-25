@@ -57,7 +57,23 @@ const BusInfoBox = (props) => {
   };
 
   const [bpdp, setBpdp] = useState("");
+  const [bookingConfirmation, setBookingConfirmation] = useState("d-none");
+  const [selectedBPoint, setSelectedBPoint] = useState(["", ""]);
+  const [selectedAPoint, setSelectedAPoint] = useState(["", ""]);
+  const changeSelectedBPoint = (str, time) => {
+    setSelectedBPoint([str, time]);
+    console.log(selectedBPoint);
+  };
 
+  const changeSelectedAPoint = (str, time) => {
+    setSelectedAPoint([str, time]);
+    console.log(selectedAPoint);
+  };
+  const contextValue = {
+    toggleOnClick,
+    changeSelectedAPoint,
+    changeSelectedBPoint,
+  };
   return (
     <div className="busInfoBox mb-3">
       <Container fluid>
@@ -264,7 +280,7 @@ const BusInfoBox = (props) => {
                       : "d-block stop-confirmation"
                   }
                 >
-                  <ToggleContext.Provider value={toggleOnClick}>
+                  <ToggleContext.Provider value={contextValue}>
                     <StopList
                       eat={props.eat}
                       ebt={props.ebt}
@@ -281,7 +297,7 @@ const BusInfoBox = (props) => {
                       : "d-block stop-confirmation"
                   }
                 >
-                  <ToggleContext.Provider value={toggleOnClick}>
+                  <ToggleContext.Provider value={contextValue}>
                     <StopList
                       eat={props.eat}
                       ebt={props.ebt}
@@ -310,6 +326,7 @@ const BusInfoBox = (props) => {
                       <span className="fare-summary-currency">INR</span>
                       <span>{price}</span>
                     </span>
+                    <div>{selectedAPoint + " " + selectedBPoint}</div>
                     <button
                       onClick={() => {
                         setBpdp("d-none");
@@ -321,7 +338,11 @@ const BusInfoBox = (props) => {
                   </div>
                 </div>
               </div>
-              <div class="search-seatlayout show_top animated seatBpDp">
+
+              <div
+                id="BookingConfirmation"
+                class={"search-seatlayout " + bookingConfirmation}
+              >
                 <div class="curtain"></div>
                 <div class="seatlayout-meta-container clearfix">
                   <div class="seatlayout-main-body">
@@ -337,7 +358,7 @@ const BusInfoBox = (props) => {
                         >
                           change
                         </span>
-                        <div class="bpDpAddr">
+                        <div class="bpDpAddr ">
                           <div class="pR oh">
                             <div class="BpDp-dashed"></div>
                             <div class="colBullet-css">

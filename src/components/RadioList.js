@@ -10,7 +10,8 @@ const RadioList = ({ stopsArr, arrOfTime, type }) => {
     arrayOfObjects.push({ stop: stops, time: arrOfTime[index] });
   });
   // console.log("((((((((", arrayOfObjects);
-  const toggleOnClick = useContext(ToggleContext);
+  const { toggleOnClick, changeSelectedAPoint, changeSelectedBPoint } =
+    useContext(ToggleContext);
   return (
     <div>
       <Form>
@@ -28,7 +29,11 @@ const RadioList = ({ stopsArr, arrOfTime, type }) => {
                     onClick={() => {
                       if (type === "boarding") {
                         toggleOnClick(2);
-                        console.log("||||||||||||", item.stop, item.time);
+
+                        changeSelectedBPoint(item.stop, item.time);
+                      } else {
+                        console.log("?????????");
+                        changeSelectedAPoint(item.stop, item.time);
                       }
                     }}
                   />
