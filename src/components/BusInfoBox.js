@@ -74,6 +74,8 @@ const BusInfoBox = (props) => {
     changeSelectedAPoint,
     changeSelectedBPoint,
   };
+  let redBusDiscount = 200;
+  const [fareDetailsToggleHook, setFareDetailsToggleHook] = useState(0);
   return (
     <div className="busInfoBox mb-3">
       <Container fluid>
@@ -315,9 +317,9 @@ const BusInfoBox = (props) => {
                     selectedSeatsHook.length > 0 ? "d-block" : "d-none"
                   }
                 >
-                  <hr className="hr-bpDpSummary"></hr>
+                  {/* <hr className="hr-bpDpSummary"></hr> */}
                   <div className="margin-t-b-10">
-                    <span className="fares-lb">Amount</span>
+                    {/* <span className="fares-lb">Amount</span>
                     <span className="fareDisclaimer margin-l-5">
                       ( Taxes will be calculated during payment )
                     </span>
@@ -326,7 +328,7 @@ const BusInfoBox = (props) => {
                       <span className="fare-summary-currency">INR</span>
                       <span>{price}</span>
                     </span>
-                    <div>{selectedAPoint + " " + selectedBPoint}</div>
+                    <div>{selectedAPoint + " " + selectedBPoint}</div> */}
                     <button
                       onClick={() => {
                         setBpdp("d-none");
@@ -342,104 +344,134 @@ const BusInfoBox = (props) => {
 
               <div
                 id="BookingConfirmation"
-                class={"search-seatlayout " + bookingConfirmation}
+                className={"search-seatlayout " + bookingConfirmation}
               >
-                <div class="curtain"></div>
-                <div class="seatlayout-meta-container clearfix">
-                  <div class="seatlayout-main-body">
-                    <div class="bp-dp-container">
-                      <div class="bpDpAddr ">
-                        <span class="bpdp-lb ">Boarding &amp; Dropping</span>
+                <div className="curtain"></div>
+                <div className="seatlayout-meta-container clearfix">
+                  <div className="seatlayout-main-body">
+                    <div className="bp-dp-container">
+                      <div className="bpDpAddr ">
+                        <span className="bpdp-lb ">
+                          Boarding &amp; Dropping
+                        </span>
                         <span
-                          class="fr bpdp-change"
+                          className="fr bpdp-change"
                           onClick={() => {
                             setBpdp("");
                             toggleHandler();
+                            setBookingConfirmation("d-none");
                           }}
                         >
                           change
                         </span>
-                        <div class="bpDpAddr ">
-                          <div class="pR oh">
-                            <div class="BpDp-dashed"></div>
-                            <div class="colBullet-css">
-                              <div class="circleBp"></div>
+                        <div className="bpDpAddr ">
+                          <div className="pR oh">
+                            <div className="BpDp-dashed"></div>
+                            <div className="colBullet-css">
+                              <div className="circleBp"></div>
                             </div>
-                            <div class="colBpDp-css">
-                              <span class="bpDpName-Lbl">
+                            <div className="colBpDp-css">
+                              <span className="bpDpName-Lbl">
                                 {selectedBPoint[0]}
                               </span>
-                              <span class="bpDpSummaryTm-Lbl">
+                              <span className="bpDpSummaryTm-Lbl">
                                 {selectedBPoint[1]}{" "}
-                                <span class="color-red-next-day"></span>
+                                <span className="color-red-next-day"></span>
                               </span>
-                              <div class="selectedBpDpAdd-Lbl">
+                              <div className="selectedBpDpAdd-Lbl">
                                 {props.fcity}
                               </div>
                             </div>
                           </div>
-                          <div class="margin-top-n-8">
-                            <div class="colBullet-css">
-                              <div class="circleDp"></div>
+                          <div className="margin-top-n-8">
+                            <div className="colBullet-css">
+                              <div className="circleDp"></div>
                             </div>
-                            <div class="colBpDp-css pR">
-                              <span class="bpDpName-Lbl">
+                            <div className="colBpDp-css pR">
+                              <span className="bpDpName-Lbl">
                                 {selectedAPoint[0]}
                               </span>
-                              <span class="bpDpSummaryTm-Lbl">
+                              <span className="bpDpSummaryTm-Lbl">
                                 {selectedAPoint[1]}{" "}
-                                <span class="color-red-next-day"></span>
+                                <span className="color-red-next-day"></span>
                               </span>
-                              <div class="selectedBpDpAdd-Lbl">
+                              <div className="selectedBpDpAdd-Lbl">
                                 {props.tcity}
                               </div>
                             </div>
                           </div>
                         </div>
                         <div>
-                          <hr class="hr-bpDpSummary" />
-                          <div class="seatlayout-meta clearfix m-t-15 m-b-15">
+                          <hr className="hr-bpDpSummary" />
+                          <div className="seatlayout-meta clearfix m-t-15 m-b-15">
                             <div>
-                              <div class="seats-selected-container">
-                                <span class="seat-lb">Seat No.</span>
-                                <span class="selected-seats">
+                              <div className="seats-selected-container">
+                                <span className="seat-lb">Seat No.</span>
+                                <span className="selected-seats">
                                   <span>{selectedSeatsHook.join(", ")}</span>
                                 </span>
                               </div>
                             </div>
                           </div>
-                          <hr class="hr-bpDpSummary" />
-                          <div class="fareDetails-Lbl">Fare Details</div>
-                          <div class="seatlayout-fare-break-container">
-                            <div class="fare-container animated fadeInUp">
-                              <ul class="fares-container">
-                                <li class="fare-row clearfix">
-                                  <span class="fare-type">Basic Fare</span>
-                                  <span class="fare-value">
-                                    <span class="fare-currency">INR</span>1199
+                          <hr className="hr-bpDpSummary" />
+                          <div className="fareDetails-Lbl">Fare Details</div>
+                          <div className="seatlayout-fare-break-container">
+                            <div className="fare-container animated fadeInUp">
+                              <ul
+                                className={
+                                  fareDetailsToggleHook == 0
+                                    ? "fares-container d-none"
+                                    : "fares-container"
+                                }
+                              >
+                                <li className="fare-row clearfix">
+                                  <span className="fare-type">Basic Fare</span>
+                                  <span className="fare-value">
+                                    <span className="fare-currency">INR</span>
+                                    {price.toFixed(2)}
+                                  </span>
+                                </li>
+                                <li className="fare-row clearfix">
+                                  <span className="fare-type">
+                                    RedBus Discount
+                                  </span>
+                                  <span className="fare-value">
+                                    <span className="fare-currency">INR</span>-
+                                    {redBusDiscount}
                                   </span>
                                 </li>
                               </ul>
-                              <div class="child-fare-text hide"></div>
+                              <div className="child-fare-text hide"></div>
                             </div>
                           </div>
-                          <div class="fare-summary-container">
-                            <span class="fares-lb">Amount</span>
-                            <span class="fr fare-summary-value">
+                          <div className="fare-summary-container">
+                            <span className="fares-lb">Amount</span>
+                            <span className="fr fare-summary-value">
                               {" "}
-                              <span class="fare-summary-currency">INR</span>
-                              <span>{price.toFixed(2)}</span>
+                              <span className="fare-summary-currency">INR</span>
+                              <span>{price.toFixed(2) - redBusDiscount}</span>
                             </span>
-                            <div class="fareDisclaimer">
+                            <div className="fareDisclaimer">
                               Taxes will be calculated during payment
                             </div>
                           </div>
-                          <h3 class="fare-toggle-btn fr m-t-0">
-                            Hide Fare Details
+                          <h3
+                            className="fare-toggle-btn fr m-t-0"
+                            onClick={() => {
+                              if (fareDetailsToggleHook === 0) {
+                                setFareDetailsToggleHook(1);
+                              } else {
+                                setFareDetailsToggleHook(0);
+                              }
+                            }}
+                          >
+                            {fareDetailsToggleHook == 0
+                              ? "Show Fare Details"
+                              : "Hide Fare Details"}
                           </h3>
-                          <div class="fr showlayout-button-container w-15"></div>
-                          <div class="continue-container w-100 fl m-b-10">
-                            <button class="button continue inactive">
+                          <div className="fr showlayout-button-container w-15"></div>
+                          <div className="continue-container w-100 fl m-b-10">
+                            <button className="button continue inactive">
                               Proceed to book
                             </button>
                           </div>
