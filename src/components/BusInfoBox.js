@@ -330,6 +330,7 @@ const BusInfoBox = (props) => {
                     <button
                       onClick={() => {
                         setBpdp("d-none");
+                        setBookingConfirmation("d-block");
                       }}
                       className="text-white continue-to-payment"
                     >
@@ -366,15 +367,14 @@ const BusInfoBox = (props) => {
                             </div>
                             <div class="colBpDp-css">
                               <span class="bpDpName-Lbl">
-                                Koyembedu (Pickup Van/Bus)
+                                {selectedBPoint[0]}
                               </span>
                               <span class="bpDpSummaryTm-Lbl">
-                                23:00 <span class="color-red-next-day"></span>
+                                {selectedBPoint[1]}{" "}
+                                <span class="color-red-next-day"></span>
                               </span>
                               <div class="selectedBpDpAdd-Lbl">
-                                6/9, Sri Kumaran Travels, Kaliamman Koil Street,
-                                Near 100 Feet Road Signal, Opp to Crown Guest
-                                House, Near Hotel Arafa,
+                                {props.fcity}
                               </div>
                             </div>
                           </div>
@@ -384,14 +384,14 @@ const BusInfoBox = (props) => {
                             </div>
                             <div class="colBpDp-css pR">
                               <span class="bpDpName-Lbl">
-                                Samayapuram Toll Gate
+                                {selectedAPoint[0]}
                               </span>
                               <span class="bpDpSummaryTm-Lbl">
-                                05:35{" "}
-                                <span class="color-red-next-day">(25 May)</span>
+                                {selectedAPoint[1]}{" "}
+                                <span class="color-red-next-day"></span>
                               </span>
                               <div class="selectedBpDpAdd-Lbl">
-                                Samayapuram Toll Gate
+                                {props.tcity}
                               </div>
                             </div>
                           </div>
@@ -403,7 +403,7 @@ const BusInfoBox = (props) => {
                               <div class="seats-selected-container">
                                 <span class="seat-lb">Seat No.</span>
                                 <span class="selected-seats">
-                                  <span>18</span>
+                                  <span>{selectedSeatsHook.join(", ")}</span>
                                 </span>
                               </div>
                             </div>
@@ -428,7 +428,7 @@ const BusInfoBox = (props) => {
                             <span class="fr fare-summary-value">
                               {" "}
                               <span class="fare-summary-currency">INR</span>
-                              <span>1199.00</span>
+                              <span>{price.toFixed(2)}</span>
                             </span>
                             <div class="fareDisclaimer">
                               Taxes will be calculated during payment
