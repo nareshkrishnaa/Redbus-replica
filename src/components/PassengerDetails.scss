@@ -1,0 +1,425 @@
+body {
+    word-break: break-word;
+    font-family: Montserrat;
+}
+
+.custinfo.slidein {
+    right: 0;
+}
+
+.custinfo {
+    height: 100vh;
+    background: #fff;
+    color: #4a4a4a;
+    position: fixed;
+    opacity: 1;
+    top: 0;
+    /* right: -50%; */
+    width: 45%;
+    z-index: 10001;
+    transition: all .5s ease-in;
+    box-shadow: -5px 0 5px -3px #949393;
+    padding: 20px;
+}
+
+.passenger-maintitle {
+    text-align: center;
+    font-size: 19px;
+    margin: 0;
+    padding-bottom: 2px;
+}
+
+.gPIIcx {
+    display: flex;
+    align-items: center;
+    margin: 0px -20px;
+    background-color: rgb(0, 55, 123);
+    padding: 1rem 0px 1rem 1rem;
+    color: rgb(255, 255, 255);
+}
+
+.oUNMD {
+    width: 66px;
+    height: 32px;
+    margin-right: 0.8rem;
+}
+
+.nrqDe {
+    display: flex;
+    flex-direction: column;
+}
+
+.eHrLVD {
+    color: rgb(255, 200, 76);
+    font-size: 14px;
+    margin: 0px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.fqiIWy {
+    font-size: 12px;
+    color: rgb(204, 204, 204);
+    margin: 0px;
+}
+
+.cBxkyr {
+    color: rgb(255, 255, 255);
+    margin-left: auto;
+    font-size: 30px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.icon-close {
+    font-size: 25px;
+}
+
+.primo_custinfo {
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+    height: 71vh;
+    box-shadow: 0 0 4px 0 hsla(0, 0%, 64%, .5);
+}
+
+.passenger_info_title {
+
+    font-weight: 600;
+    color: #1c1c1c;
+
+}
+
+.fl {
+    float: left;
+}
+
+/* Optional: Clear floats */
+.passenger_info_title::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.icon-profileIcon {
+    color: #6ec7b4;
+    margin-right: 10px;
+    font-size: 25px;
+}
+
+.icon-circle {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: rgb(164, 236, 21);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-title {
+    padding-top: 6px;
+}
+
+.passenger_info_content_block {
+    /* box-shadow: 1px 1px 4px 1px hsla(0, 0%, 64%, .5); */
+
+    padding: 1em 1em .5em;
+    background: #fff;
+    margin-bottom: .5em;
+    position: relative;
+    border: solid 1px #A3A3A380;
+    /* border: solid 1px black; */
+}
+
+.gradient-divider {
+    height: 2px;
+    background: linear-gradient(to bottom, white, rgb(204, 199, 199));
+}
+
+.passenger_sub_title {
+    color: #4a4a4a;
+    position: relative;
+}
+
+.passenger_priority {
+    margin-right: .5em;
+    padding-right: .5em;
+}
+
+.passenger_seat {
+    display: inline-block;
+    border-left: 2px solid #b2b2b2;
+    padding-left: .8em;
+}
+
+.f-bold {
+    font-weight: 700;
+}
+
+.passenger_seatno {
+    display: block;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.passenger_outer_container {
+    margin-bottom: .8em;
+}
+
+.custinfo_label {
+    display: inline-block;
+    font-size: .875em;
+    color: rgba(74, 74, 74, .86);
+    width: 100%;
+    position: relative;
+}
+
+.custinfo_label_age {
+    display: inline-block;
+    font-size: .875em;
+    color: rgba(74, 74, 74, .86);
+    width: 100%;
+    position: relative;
+    text-align: right;
+}
+
+
+.input_box {
+    width: 100%;
+    background: #fff;
+    line-height: 1.2em;
+    padding: .5em;
+    border-radius: 3px;
+    border: 1px solid #bababa;
+    outline: none;
+    font-size: 14px;
+    margin: .8em 0 0;
+    color: rgba(74, 74, 74, .86) !important;
+}
+
+.combined_block {
+
+    width: 100%;
+    min-height: 5.5em;
+    clear: left;
+}
+
+.gender_block {
+    width: 70%;
+    vertical-align: top;
+}
+
+.combined_mpax {
+    display: inline-block;
+    width: 50%;
+    right: 0;
+    margin-bottom: 1em;
+}
+
+.passenger_outer_container {
+    margin-bottom: .8em;
+}
+
+.radio_block_title {
+    font-size: .875em;
+    text-align: left;
+    color: rgba(74, 74, 74, .86);
+    display: inline-block;
+    margin-bottom: .5em;
+}
+
+.radio_container {
+    margin-top: .6em;
+    text-align: center;
+    display: flex;
+}
+
+.radio_block {
+    margin-right: 16px;
+}
+
+input[type=radio] {
+    width: 22px;
+    height: 17px;
+    vertical-align: middle;
+    float: left;
+}
+
+.gender_position_abs {
+    position: absolute;
+    width: 62px;
+    height: 18px;
+}
+
+input[type=radio] {
+    width: 22px;
+    height: 17px;
+    vertical-align: middle;
+    float: left;
+}
+
+label.radio_css {
+    padding: 0 .45em;
+    margin: 0 20px 0 0;
+    float: left;
+    font-size: 14px;
+
+}
+
+.age_block {
+    width: 30%;
+}
+
+.combined_mpax {
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 1em;
+}
+
+.age_block .cust-list {
+    width: 100%;
+}
+
+.passenger_outer_container {
+    margin-bottom: .8em;
+}
+
+.input_box_age {
+    width: 40%;
+    margin-left: 0px;
+    margin-top: 0px;
+    background: #fff;
+    line-height: 1.2em;
+    padding: .5em;
+    border-radius: 3px;
+    border: 1px solid #bababa;
+    outline: none;
+    font-size: 14px;
+    color: rgba(74, 74, 74, .86) !important;
+    text-align: right;
+}
+
+.input_box_age::placeholder {
+    text-align: right;
+}
+
+.f-r {
+    float: right;
+}
+
+.byWhSt {
+    display: inline-block;
+    font-size: 0.875em;
+    text-align: left;
+    color: rgba(74, 74, 74, 0.86);
+    width: 100%;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.stateBlock {
+    margin-top: 16px;
+}
+
+.age_label {
+    font-size: .875em;
+    text-align: left;
+    color: rgba(74, 74, 74, .86);
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.age_div {
+    float: right;
+
+}
+
+.envelope_icon {
+    color: white;
+}
+
+.passenger_contact_msg {
+    margin-bottom: 1.5em;
+    color: #333;
+    background-color: #fff181;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 3px 10px;
+    width: 75%;
+}
+
+.input_box_cc {
+    width: 80%;
+    background: #fff;
+    line-height: 1.2em;
+    padding: .5em;
+    border-radius: 3px;
+    border: 1px solid #bababa;
+    outline: none;
+    font-size: 14px;
+    margin: .8em 0 0;
+    color: rgba(74, 74, 74, .86) !important;
+}
+
+.whatsApp_block {
+    margin: 1em 0 0;
+    position: relative;
+    padding: 1em;
+    background: #fff;
+}
+
+.checkbox_css {
+    display: block;
+    position: relative;
+    padding-left: 2em;
+    cursor: pointer;
+    font-size: 1em;
+    user-select: none;
+}
+
+.checkmark {
+    top: 0;
+    left: 0;
+    height: 1rem;
+    width: 1rem;
+    border: 1px solid #d84e55;
+    border-radius: 2px;
+    background-color: #f8f4f4;
+    align-items: center;
+}
+
+.icon-whatsApp {
+    font-size: 19px !important;
+}
+
+.pptnc-link {
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.tamt {
+    font-weight: 700;
+    margin-left: 20px;
+}
+
+.ptpay {
+    float: right;
+    text-transform: uppercase;
+    font-weight: 400;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    transition: .1s;
+    border: none;
+    text-align: center;
+    background-color: #d84e55;
+    color: #fff;
+    font-size: 14px;
+    padding: 7px 15px;
+}
+
+.ptpay:hover {
+    cursor: pointer;
+}

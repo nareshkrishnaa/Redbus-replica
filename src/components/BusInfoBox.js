@@ -6,6 +6,7 @@ import ToggleContext from "./ToggleContext";
 import SleeperLayout from "./SleeperLayout";
 import SeatLayout from "./SeatLayout";
 import StopList from "./StopList";
+import PassengerDetails from "./PassengerDetails";
 
 const BusInfoBox = (props) => {
   const [buttonValue, setButtonValue] = useState("BOOK SEATS");
@@ -485,6 +486,8 @@ const BusInfoBox = (props) => {
           </Col>
         </Row>
       </Container>
+
+      <PassengerDetails />
     </div>
   );
 };
