@@ -11,9 +11,9 @@
 - BOOTSTRAP
 
 
-![image](https://github.com/nareshkrishnaa/Redbus-replica/assets/96198528/dda217c8-fe2f-4a69-b1c6-4c419212d691)
+![image](https://github.com/nareshkrishnaa/Redbus-replica/assets/96198528/5757532d-9796-463a-9c2a-f629c1ca8e2e)
 
-![image](https://github.com/nareshkrishnaa/Redbus-replica/assets/96198528/147e1fa6-9811-41d7-8398-318f75677804)
+![image](https://github.com/nareshkrishnaa/Redbus-replica/assets/96198528/413b155d-ca76-46e7-966d-c842513c6587)
 
 ![image](https://github.com/nareshkrishnaa/Redbus-replica/assets/96198528/b9437d11-c5e3-427a-99a6-e9af0fb0a52d)
 
