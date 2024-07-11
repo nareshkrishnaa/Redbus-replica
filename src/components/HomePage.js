@@ -100,16 +100,16 @@ const HomePage = () => {
         <Container fluid>
           <Row>
             <Col id="hero-bg" className="col-12 h-100 vh">
-              <Container className="mt-5">
-                <Row className="p-4">
-                  <Col md={{ span: 8, offset: 2 }}>
-                    <h2 className="fw-bold text-white text-center">
+              <Container className="mt-5 ms-0">
+                <Row className="p-4 d-flex flex-column justify-content-center ms-5">
+                  <div md={{ span: 8, offset: 2 }}>
+                    <h1 className="text-white text-center elPSlA">
                       India's No. 1 Online Bus Ticket Booking Site
-                    </h2>
-                  </Col>
+                    </h1>
+                  </div>
 
-                  <Col xs={{ span: 8, offset: 0 }} className="mt-8">
-                    <div className="inputbox-outer">
+                  <div xs={{ span: 8, offset: 0 }} className="mt-0">
+                    <div className="inputbox-outer mt-0 ms-6">
                       <div className="inputbox-inner1">
                         <div>
                           <div className="inputbox-from">
@@ -285,7 +285,7 @@ const HomePage = () => {
                         </button>
                       </div>
                     </div>
-                  </Col>
+                  </div>
                 </Row>
               </Container>
 

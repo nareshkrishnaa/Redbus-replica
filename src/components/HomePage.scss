@@ -1,15 +1,24 @@
 #hero-bg {
-  background: url("../images/hero-bg.png") center center no-repeat;
+  // background: url("../images/hero-bg.png") center center no-repeat;
+  background: url("https://s3.rdbuz.com/images/webplatform/india/Homepage-header-2000.webp") center center no-repeat;
   background-size: cover;
   height: 32rem !important;
 }
 
+.elPSlA {
+  color: rgb(255, 255, 255);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
 .inputbox-outer {
   display: flex;
-  width: 100%;
+  // width: 100%;
   justify-content: center;
   position: absolute;
-  top: 275px;
+  top: 260px;
 }
 
 .inputbox-inner1 {
