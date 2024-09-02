@@ -12,13 +12,13 @@ const Coupon = ({ key, message, coupon, companyLogo, backgroundImage }) => {
         <img src={companyLogo} className="logoImg" />
       </div>
       <div className="couponContent">
-        <div className="gJgZBc">BUS</div>
-        <div className="vOLKx">{message}</div>
-        <div className="ggQByw">Valid till 01 Jul</div>
-        <div className="jJltku">
-          <div className="iWrqRd">{coupon}</div>
+        <div className="gJgZBcN">BUS</div>
+        <div className="vOLKxZ">{message}</div>
+        <div className="ggQBywQ">Valid till 01 Jul</div>
+        <div className="jJltkuE">
+          <div className="iWrqRdP">{coupon}</div>
           <img
-            className="kcXuio"
+            className="kcXuioK"
             src="https://s2.rdbuz.com/web/images/homeV2/copy.svg"
           />
         </div>

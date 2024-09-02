@@ -215,3 +215,142 @@ select {
   display: none;
   /* Hide the scrollbar */
 }
+
+// iiiiiiiiiiiiiiiii
+
+.custom-container-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.coupon-flex {
+  display: flex;
+  gap: 1.5rem;
+  /* overflow: scroll hidden; */
+  overflow: scroll hidden;
+  scroll-behavior: smooth;
+}
+
+.coupon-flex::-webkit-scrollbar {
+  display: none;
+  /* Hide scrollbar for Chrome, Safari, Opera */
+}
+
+.custom-container {
+  /* border: solid black 1px; */
+  border-radius: 32px;
+  background: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 25px;
+  width: 75%;
+  padding: 32px;
+  margin-top: -30px;
+}
+
+.trendingOffRow {
+  display: flex !important;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.toff {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 39px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.eVcjqmBz {
+  color: rgb(16, 52, 217);
+  font-weight: 600;
+  border-radius: 1.5rem;
+  border: 1px solid rgb(170, 170, 170);
+  padding: 10px 24px;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.outerAdDiv {
+  display: flex;
+  width: 268px;
+  height: 136px;
+  border-radius: 1rem;
+  color: rgb(255, 255, 255);
+  background-image: linear-gradient(71.04deg, rgb(12, 57, 139) -6.92%, rgb(62, 118, 216) 109.43%);
+  padding: 16px;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.logoSB {
+  display: flex;
+  align-items: center;
+}
+
+.logoImg {
+  border-radius: 50%;
+}
+
+.couponContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 180px;
+}
+
+.gJgZBcN {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1.25rem;
+  padding: 0.25rem 0.5rem;
+  width: fit-content;
+  font-size: 12px;
+  text-align: center;
+}
+
+.vOLKxZ {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  max-height: 3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ggQBywQ {
+  font-size: 12px;
+  line-height: 1rem;
+  font-weight: 400;
+}
+
+.jJltkuE {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.iWrqRdP {
+  border: 1px dashed rgb(255, 255, 255);
+  border-radius: 0.25rem;
+  max-width: 140px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kcXuioK {
+  height: 1.5rem;
+  width: 1.5rem;
+  cursor: pointer;
+}
+
+.jccent {
+  width: 100%;
+}
